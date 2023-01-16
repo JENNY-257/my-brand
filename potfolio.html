@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head> <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Potfolio</title>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="potfolio.css"/>
+    </head>
+    <body>
+      
+       
+    
+    <div class="link">
+        <h2>JI</h2>
+      <nav class="navbar"><ul class="nav-menu">
+   <li class="nav-item"><a class="nav-link"id="hom" href="index.html">Home</a></li>
+     <li class="nav-item"><a class="nav-link" href="about.html">About me</a></li>
+      <li class="nav-item"><a  class="nav-link" href="potfolio.html">Portfolio</a></li>
+       <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">contact me</a></li>
+         <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+          <li class="nav-item"><a  class="nav-link" href="blogs.html">Blogs</a></li>
+           <li class="nav-item"><a class="nav-link" href="Login.html">Log in</a></li>
+           </ul>
+           <div class="hamburger">
+               <span class="bar"></span>
+               <span class="bar"></span>
+               <span class="bar"></span>
+            </div>
+       </nav>
+</div>
+
+            <h1>Creative Portfolio</h1><hr/>
+           <center><table></center>
+                <tr class="row1">
+             <td><img src="portimage4.jpg" width="190px" height="190" ></td>
+             
+          
+             <td><img src="apple1.jpg" width="190px" height="190"></td>
+              <td><img src="orange.jpg" width="190px" height="190" ></td>
+                </tr>
+                <tr class="row2">
+                    <td><img src="avoca.jpg" width="190px" height="190"></td>
+                    <td><img src="portimage4.jpg" width="190px" height="190px"></td>
+                    <td><img src="banana.jpg" width="190px" height="190"></td>
+                </tr>
+            </table>
+            <script>
+                const hamburger = document.querySelector(".hamburger");
+                 const navMenu = document.querySelector(".nav-menu");
+                 hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        })
+             </script>
+    </body>
+</html>

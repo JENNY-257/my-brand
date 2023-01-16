@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login </title>
+        <link rel= "stylesheet" href="signin.css"/>
+        <link lel="styelsheet" href="style.css"/>
+       
+        </head>
+        <body>
+            <div class="link">
+                <h2 >JI</h2>
+               
+              <nav class="navbar"><ul class="nav-menu">
+           <li class="nav-item"><a class="nav-link"id="hom" href="index.html">Home</a></li>
+             <li class="nav-item"><a class="nav-link" href="about.html">About me</a></li>
+              <li class="nav-item"><a  class="nav-link" href="potfolio.html">Portfolio</a></li>
+               <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">contact me</a></li>
+                 <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
+                  <li class="nav-item"><a  class="nav-link" href="blogs.html">Blogs</a></li>
+                   <li class="nav-item"><a class="nav-link" href="Login.html">Log in</a></li>
+                   </ul>
+                   <div class="hamburger">
+                       <span class="bar"></span>
+                       <span class="bar"></span>
+                       <span class="bar"></span>
+                    </div>
+               </nav>
+        </div>
+                
+                <p id="comment">WELCOME ON MY WEBSITE</p>
+
+           <div class="container">
+                <form id ="form">
+                    <h1>Welcome Back!</h1>
+                    <p>Welcome Back Please!Enter your Details</p>
+                    <div class="inputcontrol">
+                        <label for="Email">Email</label>
+                        <input id="Email"  name="username"type="text">
+                    </div>
+                    <div class="inputcontrol">
+                        <label for="Password">Password</label>
+                        <input id="Password"  name="Password"type="Password">
+                       <p><input type="checkbox">Remember<a  class="forget"href="#">Forgot Password</a></p>
+                    </div>
+                    <button type="submit">Sign in</button>
+                    <button type="submit"><img src="google
+                        .png">Sign in with google</button>
+                    <p>Don't have account?<a href="#">Sign up</a></p>
+
+                </form>
+                <div class="bulbles">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                    <img src="bulbles.jpg">
+                   
+                 </div>
+            </div>
+            <script>
+                const hamburger = document.querySelector(".hamburger");
+                 const navMenu = document.querySelector(".nav-menu");
+                 hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        })
+        </script>
+        </body>
+</html>

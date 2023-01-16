@@ -1,0 +1,15 @@
+@media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .link {
+      width: 100%;
+    }
+    .link ul{
+        margin:0;
+        padding:0;
+    }
+    h1{
+        text-align: center;
+        font-size: 10px;
+    }
+  }
+  
