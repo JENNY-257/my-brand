@@ -129,8 +129,8 @@ padding-top: 50px;
 .contact-right{
     flex-basis: 60%;
     padding: 20px;
-    background-color:#1c00b5 ;
-    color: white;
+    background-color:white ;
+    color: black;
 }
 
 .input-row.input-group{
@@ -175,8 +175,10 @@ padding-top: 50px;
 .contact-right{
     flex-basis: 60%;
     padding: 20px;
-    background-color:#1c00b5 ;
+    background-color:black;
     color: white;
+    border: 20px;
+    
 }
 
 .input-row.input-group{
