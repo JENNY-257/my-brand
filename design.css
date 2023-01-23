@@ -1,6 +1,41 @@
 body{
     background-color: black;
     color: white;
+}
+
+#comment-form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+  }
+  
+  #comment-form label {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    display: block;
+    color:black;
+  }
+  
+  #comment-form input[type="text"], #comment-form textarea {
+    width: 100%;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+  }
+  
+  #comment-form button {
+    background-color: blue;
+    color: white;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    border:none;
+  }
+  body{
+    background-color: black;
+    color: white;
     font-family: sans-serif;
 }
 p{
@@ -14,23 +49,13 @@ h3{
 img{
     width: 500px;
 }
-textarea{
-    margin-left: 450px;
-    padding: 20px;
-}
-input{
-    padding: 10px;
-}
-.dov{
-    border-radius: 20px;
-    border-color: white;
-    padding: 20px;
-    
-}
+
 a{
     margin-left: 30px;
    
-    color:blue;
+    color:white;
+    text-decoration: none;
+    font-size: 30px;
 }
 @media only screen and (min-width: 375px){
    
@@ -47,19 +72,39 @@ h3{
 img{
     width: 300px;
 }
-textarea{
-    margin-left: 40px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: black;
-    color:white ;
+
+
+
+
+#comment-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
 }
-input{
-    padding: 10px;
-    margin-left: 25px;
-    margin-top: 20px;
-    background-color: black;
-    color: white;
+
+#comment-form label {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  display: block;
+  color:black;
+}
+
+#comment-form input[type="text"], #comment-form textarea {
+  width: 100%;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+#comment-form button {
+  background-color: blue;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border:none;
 }
 
 }
@@ -80,21 +125,38 @@ input{
     img{
         width: 300px;
     }
-    textarea{
-        margin-left: 230px;
-        margin-top: 10px;
-        padding: 40px;
-        border-radius: 5px;
-        background-color: black;
-        color: white;
+    
+#comment-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
 
-    }
-    input{
-        background-color: black;
-        padding: 10px;
-        margin-left: 230px;
-        margin-top: 30px;
-    }
+#comment-form label {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  display: block;
+  color:black;
+}
+
+#comment-form input[type="text"], #comment-form textarea {
+  width: 100%;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+#comment-form button {
+  background-color: blue;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border:none;
+}
+   
     }
 
     
@@ -113,20 +175,37 @@ input{
     img{
         width: 300px;
     }
-    textarea{
-        margin-left: 370px;
-        margin-top: 10px;
-        padding: 30px;
-        border-radius: 5px;
-        background-color: black;
-        color:white;
+  
+    
+#comment-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
 
+#comment-form label {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  display: block;
+  color:black;
+}
+
+#comment-form input[type="text"], #comment-form textarea {
+  width: 100%;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+#comment-form button {
+  background-color: blue;
+  color: white;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border:none;
+}
     }
-    input{
-        background-color: black;
-        padding: 10px;
-        margin-left: 50px;
-        margin-top: 30px;
-        color:white;
-    }
-    }
+  

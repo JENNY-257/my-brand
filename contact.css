@@ -2,6 +2,9 @@
     margin:0;
     padding:0;
 }
+span{
+    color:red;
+}
 body{
     background-color: black;
     color:white;
@@ -175,13 +178,21 @@ padding-top: 50px;
 .contact-right{
     flex-basis: 60%;
     padding: 20px;
-    background-color:black;
-    color: white;
+    background-color:white;
+    color: black;
     border: 20px;
     
 }
 
 .input-row.input-group{
     flex-basis: 100%;
+}
+
+.container{
+    width:60%;
+    margin: 50px auto;
+}
+span{
+    color:red;
 }
 }

@@ -1,21 +1,447 @@
 <!DOCTYPE html>
 <html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css"/>
+  <style>
+body{
+    background-color: black;
+    color:white;
+}
+.top{
+    background-color :gray ;
+    width:1290px;
+    height: 55px;
+    margin-left: 50px;
+    display:grid;
+    grid-auto-flow: column;
+}
+h4{
+    margin-left: 25px;
+    margin-top: 30px;
+}
+.left{
+    color:white;
+    margin-left:50px ;
+    width: 200px;
+    height: 500px;
+    background-color: gray;
+    margin-top: 40px;
+    padding: 50px;
+}
+.left ul{
+    margin-right: 10px;
+}
+    
+
+.left ul li{
+    text-decoration: none;
+    list-style: none;
+}
+
+.left ul li a{
+    text-decoration: none;
+    list-style: none;
+    margin-right: 500px;
+    margin-left: 1px;
+}
+.left #blogs{
+color: white;
+}
+input{
+    margin-right: 400px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-top:10px;
+    
+}
+
+.between{
+    background-color: white;
+    width:1010px;
+    height:500px ;
+    margin-right: 50px;
+    margin-left: 40px;
+    color: black;
+    margin-top: 40px;
+
+}
+.between ul{
+    display:flex;
+    justify-content: space-between;
+}
+.between li{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+
+
+button{
+    background-color: green;
+    border-radius: 50px;
+    color: white;
+}
+ #edit{
+    margin-left: 700px;
+    margin-bottom: 20px;
+}
+
+h3{
+    margin-left: 100px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+hr{
+    background-color: black;
+    width: 1000px;
+}
+.left hr{
+    width:100%
+}
+img{
+    width: 20px;
+    margin-top: 5px;
+}
+.common{
+display: flex;
+justify-content: space-between;
+}
+.done{
+    padding-right: 2px;
+}
+.top a{
+    color:white;
+}
+h5{
+  font-size: 10px;
+}
+@media only screen and (min-width:375px){
+   
+    .top{
+        background-color :rgb(63, 61, 61);
+        width:500px;
+        height: 50px;
+        margin-left: 10px;
+        display:grid;
+        grid-auto-flow: column;
+        position:relative;
+        margin-top: 50px;
+    } 
+    .left ul{
+        margin-right:0;
+    }
+    h5{
+      font-size: 30px;
+    }
+    h4{
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 10px;
+    padding-right: 4px;
+}
+
+input{
+    margin-right: 30px;
+    border-radius: 50px;
+    margin-bottom: 90px;
+    margin-top:10px;
+    padding:5px;
+    font-size: 10px;
+    
+}
+
+.left{
+    color:white;
+    margin-left:10px ;
+    width: 70px;
+    height: 360px;
+    background-color:rgb(63, 61, 61);
+    padding: 30px;
+    font-size: 10px;
+    margin-top: 150px;
+    
+}
+.left ul li a{
+    text-decoration: none;
+    list-style: none;
+   
+    font-size: 10px;
+    padding:1px;
+    margin-right: 10px;
+    color:white;
+    
+    
+}
+
+.left ul li{
+    text-decoration: none;
+    list-style: none;
+    margin-right: 1px;
+
+}
+
+.between{
+    background-color: white;
+    width:300px;
+    height:400px ;
+    margin-right: 900px;
+    margin-left: 0px;
+    color: black;
+    margin-top: 150px;
+}
+
+.between ul{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 400px;
+    font-family: bold;
+}
+
+.between li{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 0;
+    font-size: 7px;
+    padding: 1px;
+    
+}
+
+hr{
+    background-color: black;
+    width:290px;
+}
+.common{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    }
+    
+img{
+    width: 20px;
+    margin-top: 5px;
+    height: 20px;
+
+}
+
+button{
+    background-color: green;
+    border-radius: 50px;
+    color: white;
+    margin-left: 2px;
+padding-top: 2px;
+padding-right: 6px;
+font-size: 6px;
+margin-top: 5px;
+}
+.done{
+    padding-left: 5px;
+}
+
+#edit{
+    margin-left: 530px;
+    margin-bottom: 20px;
+}
+
+h3{
+    margin-left: 100px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    font-size: 10px;
+}
+
+.top a{
+    color:white;
+    margin-right: 150px;
+    font-size: 10px;
+    margin-top: 20px;
+    text-decoration: none;
+}
+p{
+    font-size: 25px;
+    padding-right: 20px;
+    
+}
+
+h5{
+    color:black;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-size:7px;
+}
+}
+@media only screen and (min-width:768px){
+    .top{
+        background-color :rgb(63, 61, 61);
+        width:800px;
+        height: 60px;
+        margin-left: 10px;
+        display:grid;
+        grid-auto-flow: column;
+        position:relative;
+        margin-top: 50px;
+    
+    } 
+    .left ul{
+        margin-right:0;
+    }
+    
+h4{
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 15px;
+    padding-right: 4px;
+}
+
+input{
+    margin-right: 200px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+    margin-top:10px;
+    padding:10px;
+    font-size: 10px;
+    
+}
+
+.left{
+    color:white;
+    margin-left:10px ;
+    width: 70px;
+    height: 340px;
+    background-color:rgb(63, 61, 61);
+    margin-top:50px;
+    padding: 30px;
+    font-size: 10px;
+}
+.left ul li a{
+    text-decoration: none;
+    list-style: none;
+   
+    font-size: 10px;
+    padding:5px;
+    margin-right: 10px;
+    
+}
+.left hr{
+    background-color:white;
+    width: 100px;
+    margin-right: 60px;
+    
+}
+
+.left ul li{
+    text-decoration: none;
+    list-style: none;
+    margin-right: 1px;
+
+}
+
+.between{
+    background-color: white;
+    width:700px;
+    height:400px;
+    
+    margin-left: 0px;
+    color: black;
+    margin-top: 50px;
+}
+
+.between ul{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 400px;
+    font-family: bold;
+}
+
+.between li{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 0;
+    font-size: 10px;
+    padding: 15px;
+    
+}
+
+hr{
+    background-color: black;
+    width: 600px;
+}
+.common{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    }
+    
+img{
+    width: 20px;
+    margin-top: 5px;
+    height: 20px;
+    display:none
+}
+
+button{
+    background-color:green;
+    border-radius: 50px;
+    color: white;
+    margin-left: 2px;
+padding-top: 2px;
+padding-right: 6px;
+font-size: 10px;
+}
+.done{
+    padding-left: 5px;
+}
+
+#edit{
+    margin-left: 530px;
+    margin-bottom: 20px;
+}
+
+h3{
+    margin-left: 100px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+ h5{
+    color:black;
+    margin-left: 80px;
+    margin-top: 2px;
+    font-size: 15px;
+}
+p{
+    font-size: 10px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+
+.top a{
+    color:white;
+    margin-right: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    text-decoration: none;
+}
+}
+
+  </style>
 
 </head>
 <body>
   <div class="top">
     <h4>DASH-BOARD</h4>
     <input type="text" placeholder ="Search" >
+    <a href="#">Log out</a>
   </div>
   <div class="common">
 
     <div class="left"><ul>
-       <li><a id="blogs" href="dashboard.html">Manage Blogs</a></li> <hr>
-       <li><a id="query" href="queries.html">Manage Queries</a></li> <hr>
-       <li><a id="bcomment" href="comments.html">Manage Comments</a></li><hr>
-       <li><a id="users" href="users.html">Manage Users</a></li></ul><hr>
+       <li><a id="blogs" href="dashboard.html">Blogs</a></li> 
+       <li><a id="query" href="queries.html"> Queries</a></li>
+       <li><a id="bcomment" href="comments.html">Comments</a>
+       <li><a id="users" href="users.html">Users</a></li></ul>
       </div>
       <div class="between">
             <h3>Manage Comments</h3>
@@ -23,10 +449,10 @@
       <hr>
        
         <ul>
-      <li>05 feb 2022</li> 
-    <li style="font-size:10PX;">ISHIMWE homere</li>
-    <li>art 02</li>
-   <li>HOW CODING GAVE ME CAREER FREEDOM</li>
+      <li>05feb2022</li> 
+    <li style=>ISHIMWE</li>
+    <li>art02</li>
+   <li>coding</li>
     
   <li><button onclick="text">Prove </button></li>
 <li>  <button onclick="text">delete </button></li>
@@ -35,10 +461,10 @@
   
      
     <ul>
-        <li>05 feb 2022</li> 
-      <li style="font-size:10PX;">ISHIMWE homere</li>
-      <li>art 02</li>
-     <li>HOW CODING GAVE ME CAREER FREEDOM</li>
+        <li>05feb2022</li> 
+      <li>ISHIMWE </li>
+      <li>art02</li>
+     <li>coding</li>
       
     <li><button onclick="text">Remove </button></li>
   <li>  <button onclick="text">delete </button></li>
@@ -47,18 +473,18 @@
     
      
       <ul>
-        <li>05 feb 2022</li> 
-      <li style="font-size:10PX;">ISHIMWE homere</li>
-      <li>art 02</li>
-     <li>HOW CODING GAVE ME CAREER FREEDOM</li>
+        <li>05feb2022</li> 
+      <li >ISHIMWE </li>
+      <li>art02</li>
+     <li>coding</li>
       
     <li><button onclick="text">Remove </button></li>
   <li>  <button onclick="text">delete </button></li>
       </ul>
-      <h5>it is not a n overnight success story. it takes time and hardworking.</h5><hr>
+      <h5>it is not a n overnight success story. it takes time and hardworking.</h5>
     
   </div>
   </div>
-  <p style="color:white; margin-left: 400px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
+  <p style="color:white; margin-left: 100px; font-size: 10px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
 </body>
 </html>

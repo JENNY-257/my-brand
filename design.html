@@ -7,16 +7,71 @@
     </head>
     <body>
     
-          <a href="blogs.html">go back</a>
+          <a href="blogs.html"><</a>
             <h3>How you can be a talented person in designing using software?</h3>
             <center> <img src="graphic.jpg"></center>
            <p>Graphic designers create many types of artwork in the business world. 
             There are graphic designers for logos, page layouts, 
             ads and displays among others. </p>
-            <div class="dov"><textarea placeholder="type comment"></textarea>
-                <input type="text"placeholder="your name">
-                <button>SEND</button>
+            <div>
+                <form id="comment-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" >
+                  
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" ></textarea>
+                  
+                    <button type="submit">Submit</button>
+                  </form>
+                  
+                  
             </div>
+            <script>
+                const form = document.getElementById("comment-form");
+                    form.addEventListener("submit", validateForm);
+                    
+                    function validateForm(event) {
+                      event.preventDefault(); // prevent the form from being submitted
+                    
+                      const name = document.getElementById("name");
+                      const message = document.getElementById("message");
+                    
+                      // remove any existing error messages
+                      const errorMessages = document.querySelectorAll(".error-message");
+                      errorMessages.forEach(error => error.remove());
+                    
+                      // check if the name field is empty
+                      if (!name.value) {
+                        // create and insert the error message
+                        const errorMessage = document.createElement("div");
+                        errorMessage.classList.add("error-message");
+                        errorMessage.style.color = "red";
+                        errorMessage.innerHTML = "Please enter your name.";
+                        name.parentNode.insertBefore(errorMessage, name.nextSibling);
+                        name.classList.add("error");
+                      } else {
+                        name.classList.remove("error");
+                      }
+                    
+                      // check if the message field is empty
+                      if (!message.value) {
+                        // create and insert the error message
+                        const errorMessage = document.createElement("div");
+                        errorMessage.classList.add("error-message");
+                        errorMessage.style.color = "red";
+                        errorMessage.innerHTML = "Please enter a message.";
+                        message.parentNode.insertBefore(errorMessage, message.nextSibling);
+                        message.classList.add("error");
+                      } else {
+                        message.classList.remove("error");
+                      }
+                    
+                      // check if there are no errors
+                      if (!document.querySelectorAll(".error").length) {
+                        form.submit();
+                      }
+                    }
+                    </script>
     </body>
     
 </html>

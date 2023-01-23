@@ -4,7 +4,125 @@
         <title> Contact me</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="contact.css"/>
-        </head>
+
+<script>
+
+        function validateName() {
+
+            var name = document.getElementById('contact-name').value;
+        
+            if(name.length == 0) {
+        
+              producePrompt('Name is required', 'name-error' , 'red')
+              return false;
+        
+          }
+        
+          if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+        
+              producePrompt('First and last name, please.','name-error', 'red');
+              return false;
+        
+          }
+        
+          producePrompt('Valid', 'name-error', 'green');
+          return true;
+        
+        }
+        
+        function validatePhone() {
+        
+        var phone = document.getElementById('contact-phone').value;
+        
+        if(phone.length == 0) {
+            producePrompt('Phone number is required.', 'phone-error', 'red');
+            return false;
+        }
+        
+        if(phone.length != 10) {
+            producePrompt('Include area code.', 'phone-error', 'red');
+            return false;
+        }
+        
+        if(!phone.match(/^[0-9]{10}$/)) {
+            producePrompt('Only digits, please.' ,'phone-error', 'red');
+            return false;
+        }
+        
+        producePrompt('Valid', 'phone-error', 'green');
+        return true;
+        
+        }
+        
+        function validateEmail () {
+        
+        var email = document.getElementById('contact-email').value;
+        
+        if(email.length == 0) {
+        
+          producePrompt('Email Invalid','email-error', 'red');
+          return false;
+        
+        }
+        
+        if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+        
+          producePrompt('Email Invalid', 'email-error', 'red');
+          return false;
+        
+        }
+        
+        producePrompt('Valid', 'email-error', 'green');
+        return true;
+        
+        }
+        
+        function validateMessage() {
+        var message = document.getElementById('contact-message').value;
+        var required = 30;
+        var left = required - message.length;
+        
+        if (left > 0) {
+          producePrompt(left + ' more characters required','message-error','red');
+          return false;
+        }
+        
+        producePrompt('Valid', 'message-error', 'green');
+        return true;
+        
+        }
+        
+        function validateForm() {
+        if (!validateName() || !validatePhone() || !validateEmail() || !validateMessage()) {
+          jsShow('submit-error');
+          producePrompt('Please fix errors to submit.', 'submit-error', 'red');
+          setTimeout(function(){jsHide('submit-error');}, 2000);
+          return false;
+        }
+        else {
+        
+        }
+        }
+        
+        function jsShow(id) {
+        document.getElementById(id).style.display = 'block';
+        }
+        
+        function jsHide(id) {
+        document.getElementById(id).style.display = 'none';
+        }
+        
+        
+        function producePrompt(message, promptLocation, color) {
+        
+        document.getElementById(promptLocation).innerHTML = message;
+        document.getElementById(promptLocation).style.color = color;
+        
+        }
+
+       </script>
+
+    </head>
         <body>
             <div class="container ">
           
@@ -18,33 +136,37 @@
 
                 <div class="input-row">
 
-                    <div class="input-group">
+                    <div class="form-group">
                         <label >Name</label>
-                        <input type="text" placeholder="John">
-
+                        <input type="text"  placeholder="enter your name" id="contact-name"onkeyup="validateName()">
+                        <span id="name-error"></span>
                     </div>
-                    <div class="input-group">
+                    <div class="form-group">
                         <label >Phone</label>
-                        <input type="text" placeholder="+1239885803">
-
+                        <input type="text"id="contact-phone"onkeyup="validatePhone()">
+                        <span id="phone-error"></span>
                     </div>
                    
                     
-                    <div class="input-group">
+                    <div class="form-group">
                         <label >Email</label>
-                        <input type="email" placeholder="demo@gmail.com">
+                        <input type="email" id="contact-email"onkeyup="validateEmail()">
+                        <span id="email-error"></span>
 
                     </div>
-                    <div class="input-group">
+                    <div class="form-group">
                         <label >Subject</label>
-                        <input type="text" placeholder="ProductDemo">
+                        <input type="text" id="contact-subjct"onkeyup="validateSubject()">
+                        <span id="subject-error"></span>
 
                     </div>
                    
                 </div>
                         <label>Message</label>
-                   <textarea rows="5" placeholder="Your Message"></textarea>
-                   <button type="submit">SEND</button>
+                   <textarea rows="5" id="contact-message"onkeyup="validateMessage()"></textarea>
+                   <span id="message-error"></span>
+                   <button type="submit">submit</button>
+                   <span id="submit-error"></span>
                     </form>
                 </div>
                 <div class="contact-right">
@@ -67,6 +189,6 @@
                </div>
                <a href="index.html">Back</a>
             </div>
-           
+          
         </body>
 </html>
