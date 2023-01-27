@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html><head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dashboard.css"/>
 
@@ -9,7 +10,7 @@
   <div class="top">
    <h4>DASH-BOARD</h4>
    <input type="text" placeholder ="Search" >
-   <a href="#">Log out</a>
+   <a href="index.html">Log out</a>
   </div>
 
   <div class="common">
@@ -20,49 +21,53 @@
        <li><a id="comment" href="comments.html">Comments</a></li><hr>
        <li><a id="users" href="users.html">Users</a></li><hr>
       </div>
-      <div class="between">
+      <div class="between" id="adminBlog">
             <h3>Manage Blogs</h3>
       <button id="edit" onclick="text"><a href="article.html" style="text-decoration: none;color:white">Add New</a></button>
       <hr>
        
-        <ul>
-      <li>Art1</li> 
-    <li>coding </li>
-    <li>05Dec2022</li>
-   <li><img src="veuw.png"></li>
-    <li>5views</li>
-    <li><img src="like.png"></li>
-    <li>2likes</li>
-    <li>3comments</li>
-  <li><button onclick="text" class="done">Edit </button></li>
-<li>  <button onclick="text" class="delete">Delete </button></li>
-    </ul><hr>
-    <ul>
-      <li>Art1</li> 
-    <li>coding </li>
-    <li>05Dec2022</li>
-   <li><img src="veuw.png"></li>
-    <li>5views</li>
-    <li><img src="like.png"></li>
-    <li>2likes</li>
-    <li>3comments</li>
-  <li><button onclick="text" class="done">Edit </button></li>
-<li>  <button onclick="text"class="delete">Delete</button></li>
-    </ul><hr>
-    <ul>
-      <li>Art1</li> 
-    <li >coding </li>
-    <li>05Dec2022</li>
-   <li><img src="veuw.png"></li>
-    <li>5views</li>
-    <li><img src="like.png"></li>
-    <li>2likes</li>
-    <li>3comments</li>
-  <li><button  class="done"onclick="text">Edit </button></li>
-<li>  <button onclick="text"class="delete">Delete </button></li>
-    </ul>
-  </div>
+     
+   
+  
+   
   </div>
   <p style="color:white; margin-left: 400px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
+  <script>
+   function deleteArticle(id){
+    let blogsGet= JSON.parse(localStorage.getItem("article")) || []
+
+    let index =blogsGet.findIndex((obj) => obj.id === id)
+    
+    blogsGet.splice(index, 1)
+
+    localStorage.setItem('article', JSON.stringify(blogsGet))
+
+    window.location.reload()
+   } 
+    function dashboard(){
+      let blogsGet= JSON.parse(localStorage.getItem("article")) || []
+      let admin=document.getElementById("adminBlog");
+      for(let value of blogsGet){
+        let ul= document.createElement("ul")
+        ul.innerHTML=`
+        <li>Art${value.id}</li> 
+    <li>${value.titleB} </li>
+    <li>${value.blogDate}</li>
+   <li><img src="veuw.png"></li>
+    <li>${value.views}views</li>
+    <li><img src="like.png"></li>
+    <li>${value.like}likes</li>
+    <li>${value.comment}comments</li>
+  <li><button onclick="text" class="done">Edit </button></li>
+<li><button onclick="deleteArticle(${value.id})" class="delete">Delete </button></li>
+
+        `
+        admin.appendChild(ul)
+      }
+      
+    }
+    dashboard();
+    
+  </script>
 </body>
 </html>

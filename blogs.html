@@ -7,36 +7,32 @@
     </head>
     <body>
 <h1>My Blogs</h1>
-<div class="tech">
-    <span>Tech</span>
-  <center><img src="tech.png"></center>
-  <h3>Why most of the people in the world need to use Technology.
-    5technologies you can know</h3> 
-    <a  id="but" href="Technology.html">Tech</a>
-</div>
-<div class="arch">
-    <span>Architecture</span>
-    <center><img src="arch.jpg"></center>
-     <h3>Architecture  is more important in Business </h3>
-    <a   id="buton"href="architecture.html">Architecture</a> 
- </div>
+<div class="blogsPhoto" id="blogsId">
 
-<div class="graphic">
-    <span>Design</span>
-   <center> <img src="graphic.jpg"></center>
-    <h3>How you can be a talented person in designing using software?</h3>
-    <a id="buton" href="design.html">Design</a>
-</div>
+  </div>
+<a href ="index.html">Back</a>
+<script>
+let photo=document.getElementById("blogsId");
+let blogArticle=JSON.parse(localStorage.getItem("article"))||[]
+function validation(){
+    for(let value  of blogArticle){
+        let div=document.createElement("div");
+        div.innerHTML=`
+        <span>${value.titleB}</span>
+  <center><img src="${value.coverPhotoB}"></center>
+  <h3>${value.blogSummary}</h3> 
+    <a onclick="views()" id="but" href="design.html?id=${value.id} ">${value.titleB}</a>
+        `
+      photo.appendChild(div)
+      
+      localStorage.setItem("article",JSON.stringify(blogArticle))
+    }
 
-<div class="music">
-    <span>Music</span>
-    <center> <img src="music.jpg"></center>
-     <h3>To listen music reduce stress ,strock
-        and improve listenning skills.</h3>
-       <a id="buton" href="music.html">Music</a> 
-     
- </div>
-<a href ="index.html">Back</a> 
+
+
+}
+validation();
+</script> 
 
     </body>
 </html>

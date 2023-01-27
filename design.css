@@ -2,6 +2,11 @@ body{
     background-color: black;
     color: white;
 }
+.clickBlogs p{
+  width:290px;
+    margin-right: 490px;
+    background-color: none;
+}
 
 #comment-form {
     width: 400px;
@@ -38,18 +43,13 @@ body{
     color: white;
     font-family: sans-serif;
 }
-p{
-    width:290px;
-    text-align: center;
-    margin-left: 490px;
-}
+
 h3{
     margin-left: 450px;
 }
 img{
     width: 500px;
 }
-
 a{
     margin-left: 30px;
    
@@ -57,32 +57,41 @@ a{
     text-decoration: none;
     font-size: 30px;
 }
-@media only screen and (min-width: 375px){
+@media only screen and (max-width: 600px){
    
-p{
-    width:300px;
-    text-align: center;
-    margin-left: 30px;
-    font-size: 15px;
+.clickBlogs p{
+  width:290px;
+ margin-right: 500px;
+  background-color: none;
+  color:white;
+  
 }
 h3{
-    margin-left: 30px;
+    margin-left: 40px;
     font-size: 15px;
+}
+.clickBlogs .likeImage{
+ width: 20px;
+ margin-left: 20px;
 }
 img{
     width: 300px;
+  margin-left: 10px;
+    
 }
-
 
 
 
 #comment-form {
-  width: 400px;
+  width: 250px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
+  margin-right: 10px;
+ 
 }
+
 
 #comment-form label {
   font-size: 1.2em;
@@ -96,6 +105,7 @@ img{
   font-size: 1.2em;
   margin-bottom: 1em;
   padding: 0.5em;
+  
 }
 
 #comment-form button {
@@ -110,30 +120,39 @@ img{
 }
 
 
-@media only screen and (min-width: 768px){
+@media only screen and (max-width: 900px) {
    
-    p{
-        width:300px;
+    .clickBlogs p{
+        
         text-align: center;
-        margin-left: 220px;
+        margin-left: 20px;
         font-size: 15px;
+        
     }
     h3{
+        margin-left: 50px;
+        font-size: 15px;
+        color:yellow;
         margin-left: 200px;
-        font-size: 15px;
+      
     }
-    img{
-        width: 300px;
+    .clickBlogs .clickImage{
+        width: 20px;
+        margin-right: 10px;
     }
     
+    
+    
 #comment-form {
-  width: 400px;
-  margin: 0 auto;
+  width: 380px;
+  margin: 5px auto;
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
-}
+  margin-right: 230px;
 
+  
+}
 #comment-form label {
   font-size: 1.2em;
   margin-bottom: 0.5em;
@@ -142,7 +161,7 @@ img{
 }
 
 #comment-form input[type="text"], #comment-form textarea {
-  width: 100%;
+  width: 90%;
   font-size: 1.2em;
   margin-bottom: 1em;
   padding: 0.5em;
@@ -160,44 +179,54 @@ img{
     }
 
     
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 900px){
    
-    p{
-        width:480px;
+   .clickBlogs p{
+      
         text-align: center;
-        margin-left: 350px;
-        font-size: 20px;
-    }
-    h3{
         margin-left: 300px;
         font-size: 20px;
+       
+       
+        color:white;
+    }
+   .clickBlogs h3{
+        margin-left: 290px;
+        font-size: 20px;
     }
     img{
-        width: 300px;
+        width: 500px;
+        margin-right: 5px;
     }
-  
+  .clickBlogs .likeImage{
+    margin-left: 400px;
+    width:30px;
+  }
     
 #comment-form {
-  width: 400px;
-  margin: 0 auto;
+  width: 410px;
+  margin: 10px auto;
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
+  margin-right: 300px;
 }
 
 #comment-form label {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 0.5em;
   display: block;
   color:black;
 }
 
 #comment-form input[type="text"], #comment-form textarea {
-  width: 100%;
+  width: 95%;
   font-size: 1.2em;
   margin-bottom: 1em;
   padding: 0.5em;
+  
 }
+
 
 #comment-form button {
   background-color: blue;

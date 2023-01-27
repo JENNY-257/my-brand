@@ -27,6 +27,14 @@ form {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+#summary{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid ;
+  border-radius: 4px;
+}
 
 /* Blog cover photo input field */
 #cover-photo {
@@ -54,7 +62,7 @@ form {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid ;
   border-radius: 4px;
 }
 
@@ -76,17 +84,17 @@ form {
 }
 
 /* Highlight input fields with errors */
-#title.invalid, #cover-photo.invalid, #category.invalid, #content.invalid {
+#title.invalid, #cover-photo.invalid, #category.invalid, #content.invalid ,#summary.invalid{
   border: 1px solid red;
 }
 
 /* Show error message when input field is focused */
-#title:focus + #titleError, #cover-photo:focus + #photoError, #category:focus + #categoryError, #content:focus + #contentError {
+#title:focus + #titleError, #summary:focus + #summaryError ,#cover-photo:focus + #photoError,#category:focus + #categoryError, #content:focus + #contentError {
   display: block;
 }
 
 /* Hide error message when input field is not focused */
-#title:not(:focus) + #titleError, #cover-photo:not(:focus) + #photoError, #category:not(:focus) + #categoryError, #content:not(:focus) + #contentError {
+#title:not(:focus) + #titleError,#summary:not(:focus) + #summaryError , #cover-photo:not(:focus) + #photoError, #category:not(:focus) + #categoryError, #content:not(:focus) + #contentError {
   display: block;
 }
 
@@ -101,6 +109,9 @@ form {
             <label for="title">Blog Title:</label>
             <input type="text" id="title" name="title">
             <div id="titleError" style="color:red;"></div>
+            <label for="title">Blog summary:</label>
+            <input type="text" id="summary" name="summary">
+            <div id="summaryError" style="color:red;"></div>
           
             <label for="cover-photo">Blog Cover Photo:</label>
             <input type="file" id="cover-photo" name="cover-photo" >
@@ -121,52 +132,119 @@ form {
           
             <input class="buto" type="submit" value="Add Blog">
           </form>
+          
          
           
           <script>
-            var form = document.getElementById("myForm");
+              let blogSum=document.getElementById("summary");
+              let blogError=document.getElementById("summaryError");
+              let titleB = document.getElementById("title");
+              let coverPhotoB = document.getElementById("cover-photo");
+              let categoryB = document.getElementById("category");
+              let contentB = document.getElementById("content");
+              let titleError = document.getElementById("titleError");
+               let photoError = document.getElementById("photoError");
+              let categoryError = document.getElementById("categoryError");
+              let contentError = document.getElementById("contentError");
+              const toBase64 = file => new Promise((resolve, reject) => {
+              const reader = new FileReader();
+                reader.readAsDataURL(file);
+               reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                });
+            let form = document.getElementById("myForm");
             form.addEventListener("submit", validateForm);
+
           
-            function validateForm(event) {
+           async function validateForm(event) {
               event.preventDefault();
-          
-              var title = document.getElementById("title").value;
-              var coverPhoto = document.getElementById("cover-photo").value;
-              var category = document.getElementById("category").value;
-              var content = document.getElementById("content").value;
-              var titleError = document.getElementById("titleError");
-              var photoError = document.getElementById("photoError");
-              var categoryError = document.getElementById("categoryError");
-              var contentError = document.getElementById("contentError");
-          
-              if (title == "") {
+            let coverPhotoDotor = document.getElementById("cover-photo").files[0];
+             let blogSummary=blogSum.value;
+            let title=titleB.value;
+            let coverPhoto=coverPhotoB.value;
+            let category =categoryB.value;
+            let content=contentB.value;
+            // console.log(title);
+
+              if (title ==="") {
                 titleError.textContent = "Blog title is required";
               } else {
                 titleError.textContent = "";
               }
-          
-              if (coverPhoto == "") {
+          if(blogSummary===""){
+            blogError.textContent = "Blog summary is required";
+          }
+          else{
+            blogError.textContent="";
+          }
+              if (coverPhoto ==="") {
                 photoError.textContent = "Blog cover photo is required";
               } else {
                 photoError.textContent = "";
               }
           
-              if (category == "") {
+              if (category === "") {
                 categoryError.textContent = "Blog category is required";
               } else {
                 categoryError.textContent = "";
               }
           
-              if (content == "") {
+              if (content ==="") {
                 contentError.textContent = "Blog content is required";
               } else {
                 contentError.textContent = "";
               }
+
+              
+              if(title!==""||coverPhoto !==""||category !== "" ||content !== ""||blogSummary!==""){
+              // let blogArticle = JSON.parse(localStorage.getItem("article")) || []
+              // blogArticle.push({
+              //   id:blogArticle.length +1,
+              //   titleB:titleB.value,
+              //   coverPhotoB:await toBase64(coverPhotoDotor),
+              //   categoryB:categoryB.value,
+              //   contentB:contentB.value,
+              //   blogSummary:blogSum.value
+                
+               
+              // })
+              // let articleSet=localStorage.setItem("article", JSON.stringify(blogArticle))
+              // console.log(blogArticle);
+              // console.log(blogArticle[0].coverPhotoB);
+              
+              
+              let articleBlog =JSON.parse(localStorage.getItem("article")) || []
+              articleBlog.push({
+                id:articleBlog.length +1,
+                titleB:titleB.value,
+                coverPhotoB:await toBase64(coverPhotoDotor),
+                categoryB:categoryB.value,
+                contentB:contentB.value,
+                blogSummary:blogSum.value,
+                comment:0,
+                commentValue:[],
+                blogDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}),
+               like:0,
+               views:0
+              })
+              let articleSet=localStorage.setItem("article", JSON.stringify(articleBlog))
+              // console.log(blogArticle);
+
+              
+              blogSum.value="";
+                titleB.value="";
+                coverPhotoB.value="";
+                categoryB.value = "";
+                editor.html.set("");
+                  console.log("hello world");
+            
+           
             }
+          }
           </script>
           <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
           <script>
-            let editor = new FroalaEditor('#content')
+            let editor = new FroalaEditor('#content',{heightMax:150})
           </script>
 
     </body>

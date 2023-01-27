@@ -16,7 +16,7 @@
                <div class="contact-box ">
                 <div class="contact-left">
                     <h3>Sent your request</h3>
-                <form >
+                <form action="#">
 
                 <div class="input-row">
 
@@ -43,7 +43,7 @@
                         <label>Message</label>
                    <textarea rows="5" id="contact-message"onkeyup="validateMessage()"></textarea>
                    <span id="message-error"></span>
-                   <button type="submit">submit</button>
+                   <button type="click" onclick="validateForm()">submit</button>
                    <span id="submit-error"></span>
                     </form>
                 </div>
@@ -154,18 +154,49 @@
     return true;
     
     }
-    
+
     function validateForm() {
+       
     if (!validateName() || !validatePhone() || !validateEmail() || !validateMessage()) {
       jsShow('submit-error');
       producePrompt('Please fix errors to submit.', 'submit-error', 'red');
       setTimeout(function(){jsHide('submit-error');}, 2000);
       return false;
+    console.log("error");
     }
-    else {
     
+        let name = document.getElementById('contact-name');
+    let phone = document.getElementById('contact-phone');
+    let email = document.getElementById('contact-email');
+    let message = document.getElementById('contact-message');
+    let nameValue = name.value
+    let phoneValue = phone.value
+    let emailValue = email.value
+    let messageValue = message.value
+    
+    let contact = JSON.parse(localStorage.getItem("contactInf")) || []
+    
+    contact.push({
+    id:contact.length +1,
+    nameB:nameValue,
+    phoneB:phoneValue,
+    emailB:emailValue,
+    messageB:messageValue,
+    contactDate:new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+   
+    })
+  localStorage.setItem("contactInf",JSON.stringify(contact))
+    name.value="";
+    phone.value="";
+    email.value="";
+    message.value="";
+    
+    console.log(contact); 
     }
-    }
+    
+ 
+   
+// }
     
     function jsShow(id) {
     document.getElementById(id).style.display = 'block';
@@ -182,6 +213,8 @@
     document.getElementById(promptLocation).style.color = color;
     
     }
+   
+    
 
    </script>
           

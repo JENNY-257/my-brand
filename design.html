@@ -6,20 +6,16 @@
         <link rel="stylesheet" href="design.css"/>
     </head>
     <body>
-    
-          <a href="blogs.html"><</a>
-            <h3>How you can be a talented person in designing using software?</h3>
-            <center> <img src="graphic.jpg"></center>
-           <p>Graphic designers create many types of artwork in the business world. 
-            There are graphic designers for logos, page layouts, 
-            ads and displays among others. </p>
+         <div class="clickBlogs" id="clickId">
+         </div>
             <div>
-                <form id="comment-form">
+              
+                <form id="comment-form" action="#">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" >
                   
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" ></textarea>
+                   <input type="text" id = "message" name ="Message" >
                   
                     <button type="submit">Submit</button>
                   </form>
@@ -27,36 +23,67 @@
                   
             </div>
             <script>
-                const form = document.getElementById("comment-form");
+                let form = document.getElementById("comment-form");
+                let name1 = document.getElementById("name");
+                       let message = document.getElementById("message");
+                    
+                let params = (new URL(document.location)).searchParams;
+                 let name = params.get('id')
+
+                 let getStorage =JSON.parse(localStorage.getItem('article')) ;
+
+
+                     let blogContent = getStorage.find(x => x.id == name)
+                     
+                     
+                    function functionId(){
+                      let blog=document.getElementById("clickId");
+                      let coma=document.createElement("div");
+                      
+                      coma.innerHTML=`
+                      <a href="blogs.html"><</a>
+                      <h3>${blogContent.titleB}</h3>
+                      <center> <img src="${blogContent.coverPhotoB}"></center>
+                     <p>${blogContent.contentB }</p>
+                     <img  class=" likeImage"src="like.png" onclick="likes()">
+                     <span>${blogContent.like}likes<span>
+                     
+                     
+                      `
+                      blog.appendChild(coma)
+                      blogContent.views +=1
+                      
+                     }
+                     functionId();
+                    
                     form.addEventListener("submit", validateForm);
                     
                     function validateForm(event) {
                       event.preventDefault(); // prevent the form from being submitted
+                     
                     
-                      const name = document.getElementById("name");
-                      const message = document.getElementById("message");
-                    
-                      // remove any existing error messages
-                      const errorMessages = document.querySelectorAll(".error-message");
+                     
+                      //  remove any existing error messages
+                      let errorMessages = document.querySelectorAll(".error-message");
                       errorMessages.forEach(error => error.remove());
                     
                       // check if the name field is empty
-                      if (!name.value) {
+                      if (!name1.value) {
                         // create and insert the error message
-                        const errorMessage = document.createElement("div");
+                        let errorMessage = document.createElement("div");
                         errorMessage.classList.add("error-message");
                         errorMessage.style.color = "red";
                         errorMessage.innerHTML = "Please enter your name.";
-                        name.parentNode.insertBefore(errorMessage, name.nextSibling);
-                        name.classList.add("error");
+                        name1.parentNode.insertBefore(errorMessage, name1.nextSibling);
+                        name1.classList.add("error");
                       } else {
-                        name.classList.remove("error");
+                        name1.classList.remove("error");
                       }
                     
                       // check if the message field is empty
                       if (!message.value) {
                         // create and insert the error message
-                        const errorMessage = document.createElement("div");
+                        let errorMessage = document.createElement("div");
                         errorMessage.classList.add("error-message");
                         errorMessage.style.color = "red";
                         errorMessage.innerHTML = "Please enter a message.";
@@ -64,13 +91,81 @@
                         message.classList.add("error");
                       } else {
                         message.classList.remove("error");
+
                       }
+
+                      console.log(name1.value);
+                      console.log(message.value);
+                  //  if(message.value!=="" && name1.value!==""){
+                    
+                     
+                    
+                    
+                let params = (new URL(document.location)).searchParams;
+                 let name = params.get('id')
+                 let holdName=name1.value;
+                 
+ 
+                     
+                       let holdMessage=message.value;
+                 let getStorage =JSON.parse(localStorage.getItem('article')) ;
+
+
+                     let blogContent = getStorage.find(x => x.id == name)
                     
                       // check if there are no errors
-                      if (!document.querySelectorAll(".error").length) {
-                        form.submit();
+                      // if (!document.querySelectorAll(".error").length) {
+                        // form.submit();
+                      // }
+                    
+                       
+
+
+                     
+                     
+                       blogContent.comment += 1
+                      blogContent.commentValue.push({
+                        id:blogContent.commentValue.length +1,
+                       messageValue:message.value,
+                       nameValue:name1.value,
+                       commentDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+
+
+                         })
+                          // blogContent.nameValue +=name.value
+                       
+                         
+    
+    
+                    let blogIndex = getStorage.findIndex(x => x.id == name)
+
+                      getStorage[blogIndex] = blogContent;
+                      localStorage.setItem("article", JSON.stringify(getStorage))
+    
+                     message.value="";
+                    name1.value="";
+                    // functionId();
+                   
                       }
-                    }
+                    function likes(){
+                      let params = (new URL(document.location)).searchParams;
+    let name = params.get('id')
+
+    let getStorage =JSON.parse(localStorage.getItem('article')) ;
+// wibuke ko getStorage is an array
+let blogContent = getStorage.find(x => x.id == name) 
+blogContent.like +=1
+
+const blogIndex = getStorage.findIndex(x => x.id == name)
+
+getStorage[blogIndex] = blogContent;
+
+localStorage.setItem('article', JSON.stringify(getStorage)) 
+
+window.location.reload()
+}
+                    
+                    
                     </script>
     </body>
     

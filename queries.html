@@ -377,13 +377,7 @@ hr{
     justify-content: space-between;
     margin-top: 0;
     }
-    
-img{
-    width: 20px;
-    margin-top: 5px;
-    height: 20px;
-    display:none
-}
+ 
 
 button{
     background-color:green;
@@ -409,9 +403,67 @@ h3{
     margin-left: 50px;
     font-size: 10px;
 }
-p{
-    font-size: 25px;
-    padding-right: 30px;
+
+   
+
+}
+
+@media only screen  and (min-width:900px){
+
+    table{
+        margin-left: 55px;
+    }
+    table tr{
+        padding:5px;
+    }
+    table tr td{
+        padding:15px;
+        margin-left: 20px;
+    }
+    table  tr .tableMessage{
+        margin-left: 10px;
+        padding-left:20px;
+    }
+    
+.between{
+    background-color: white;
+    width:600px;
+    height:350px;
+    
+    margin-left: 0px;
+    color: black;
+    margin-top: 50px;
+}
+
+.between ul{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    font-family: bold;
+}
+
+.between li{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 10px;
+    font-size: 10px;
+    padding: 10px;
+    margin-left:1px;
+    width:300px;
+    
+}
+
+button{
+    background-color:green;
+    border-radius: 50px;
+    color: white;
+    margin-left: 10px;
+padding-top: 5px;
+padding-right: 20px;
+padding-left: 20px;
+font-size: 15px;
+border:none;
+margin-bottom: 80px;
 }
 }
    
@@ -422,7 +474,7 @@ p{
   <div class="top">
    <h4>DASH-BOARD</h4>
    <input type="text" placeholder ="Search" >
-   <a href="#">Log out</a>
+   <a href="index.html">Log out</a>
   </div>
   <div class="common">
 
@@ -432,48 +484,67 @@ p{
        <li><a id="bcomment" href="comments.html">Comments</a></li>
        <li><a id="users" href="users.html">Users</a></li></ul>
       </div>
-      <div class="between">
+      <div class="between" id="contactMessage">
             <h3>Manage queries</h3>
       <hr>
-       
-        <ul>
-      <li>05Dec2022</li> 
-    <li >Ishimwe </li>
-    <li>072975487</li>
-   <li>coding</li>
-    <li>sibojack@gmail.com</li>
-  <li><button onclick="text">Contact </button></li>
-<li>  <button onclick="text">Delete </button></li>
-    </ul>
-    <h5>it is not a n overnight success story. it takes time and hardworking.</h5><hr>
-  
-    
-    <ul>
-        <li>05Dec2022</li> 
-      <li>Ishimwe </li>
-      <li>072975487</li>
-     <li>coding</li>
+      <table>
+     <tr><td>Date </td>
+        <td>Name </td>
+        <td>Phone</td>
+        <td>email</td>
+        <td class="tablemessage">Message</td>
 
-      <li>sibojack@gmail.com</li>
-    <li><button onclick="text">Contact</button></li>
-  <li>  <button onclick="text">Delete </button></li>
-      </ul>
-      <h5>it is not a n overnight success story. it takes time and hardworking.</h5><hr>
-    
+    </tr>
       
-      <ul>
-        <li>05Dec2022</li> 
-      <li >Ishimwe </li>
-      <li>072975487</li>
-     <li>coding</li>
-      <li>sibojack@gmail.com</li>
-    <li><button onclick="text">Contact </button></li>
-  <li>  <button onclick="text">Delete </button></li>
-      </ul>
-      <h5>it is not a n overnight success story. it takes time and hardworking.</h5>
-    
+      </table>
+     
+      
   </div>
   </div>
   <p style="color:white; margin-left: 200px; font-size: 10px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
+<script>
+ function deleteContact(id){
+    let contactGet= JSON.parse(localStorage.getItem('contactInf')) 
+
+    let index2 =contactGet.findIndex((obj) => obj.id === id)
+    
+    contactGet.splice(index2, 1)
+console.log("hello world");
+    localStorage.setItem('contactInf', JSON.stringify(contactGet))
+
+    window.location.reload()
+   } 
+
+function getValue(){
+    let contactHold= document.getElementById('contactMessage')
+    let contact = JSON.parse(localStorage.getItem('contactInf'))
+    
+    console.log('hello')
+
+    for (let value of contact) {
+        let ul = document.createElement('ul')
+        ul.innerHTML = `
+    
+        <li>${value.contactDate}</li> 
+    <li >${value.nameB} </li>
+    <li>${value.phoneB}</li>
+    <li>${value.emailB}</li>
+    <li>${value.messageB}
+    
+<li>  <button onclick="deleteContact(${value.id})">Delete </button></li>
+      `
+        contactHold.appendChild(ul)
+
+    } 
+    // let localContact=localStorage.setItem("contactInf",JSON.stringify(contact, getCircularReplacer()))
+ 
+  }
+  getValue();
+
+</script>
+
+
+
 </body>
+
 </html>
