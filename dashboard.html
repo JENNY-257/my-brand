@@ -44,6 +44,17 @@
 
     window.location.reload()
    } 
+   function editArticle(id){
+    let blogsSet= JSON.parse(localStorage.getItem("article")) || []
+
+    let indexOne =blogsSet.findIndex((obj) => obj.id === id)
+    
+    blogsSet[indexOne]
+console.log(blogsSet[indexOne]);
+    localStorage.setItem('setArticle', JSON.stringify( blogsSet[indexOne]))
+
+    window.location="edit.html"
+   } 
     function dashboard(){
       let blogsGet= JSON.parse(localStorage.getItem("article")) || []
       let admin=document.getElementById("adminBlog");
@@ -58,7 +69,7 @@
     <li><img src="like.png"></li>
     <li>${value.like}likes</li>
     <li>${value.comment}comments</li>
-  <li><button onclick="text" class="done">Edit </button></li>
+  <li><button onclick="editArticle(${value.id})"  class="done">Edit </button></li>
 <li><button onclick="deleteArticle(${value.id})" class="delete">Delete </button></li>
 
         `

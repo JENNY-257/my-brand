@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<htm>
+    <head>
+        <title>check article</title>
+        <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+
+        <style>
+            body{
+                background-color: black;
+                color:white;
+            }
+            /* Form container */
+form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  color:black;
+}
+
+/* Blog title input field */
+#title {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#summary{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid ;
+  border-radius: 4px;
+}
+
+/* Blog cover photo input field */
+#cover-photo {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Blog category select field */
+#category {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Blog content textarea */
+#content {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid ;
+  border-radius: 4px;
+}
+
+/* Error messages */
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+.buto{
+    background-color: blue;
+    margin-top: 20px;
+    padding:10px;
+    font-size: 15px;
+    color:white;
+    border-radius: 50px;
+    border:none;
+   
+}
+
+/* Highlight input fields with errors */
+#title.invalid, #cover-photo.invalid, #category.invalid, #content.invalid ,#summary.invalid{
+  border: 1px solid red;
+}
+
+/* Show error message when input field is focused */
+#title:focus + #titleError, #summary:focus + #summaryError ,#cover-photo:focus + #photoError,#category:focus + #categoryError, #content:focus + #contentError {
+  display: block;
+}
+
+/* Hide error message when input field is not focused */
+#title:not(:focus) + #titleError,#summary:not(:focus) + #summaryError , #cover-photo:not(:focus) + #photoError, #category:not(:focus) + #categoryError, #content:not(:focus) + #contentError {
+  display: block;
+}
+
+          
+         
+          
+          </style>
+    </head>
+    <body>
+
+        <form id="myForm" action="#">
+            <label for="title">Blog Title:</label>
+            <input type="text" id="title" name="titleName">
+            <div id="titleError" style="color:red;"></div>
+            <label for="title">Blog summary:</label>
+            <input type="text" id="summary" name="summary">
+            <div id="summaryError" style="color:red;"></div>
+          
+            <!-- <label for="cover-photo">Blog Cover Photo:</label>
+            <input type="file" id="cover-photo" name="cover-photo" >
+            <div id="photoError" style="color:red;"></div> -->
+          
+            <!-- <label for="category">Choose Category:</label>
+            <select id="category" name="category" >
+              <option value=""></option>
+              <option value="technology">Technology</option>
+              <option value="fashion">Fashion</option>
+              <option value="food">Food</option>
+            </select> -->
+            <div id="categoryError" style="color:red;"></div>
+          
+            <label for="content">Blog Content:</label>
+            <textarea id="content" name="content" ></textarea>
+            <div id="contentError" style="color:red;"></div>
+          
+            <button class = "buto" onclick="saveBlog()">save</button>
+          </form>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+        <script>
+          let editor = new FroalaEditor('#content',{heightMax:150}) 
+        </script>
+        <script>
+            function getEditableBlog(){
+         const editableBlog=  JSON.parse(localStorage.getItem('setArticle'))
+         document.getElementById('title').value= editableBlog.titleB;
+         document.getElementById('summary').value= editableBlog.blogSummary;
+        editor.html.set(editableBlog.contentB);   
+        }
+        function saveBlog(){
+
+let editableBlog = JSON.parse(localStorage.getItem('setArticle'))
+
+let blogValues = JSON.parse(localStorage.getItem('article'))
+let blogIndex = blogValues.findIndex(x => x.id == editableBlog.id)
+
+console.log(blogValues[blogIndex])
+blogValues[blogIndex].titleB=document.getElementById('title').value 
+blogValues[blogIndex].blogSummary=document.getElementById('summary').value
+blogValues[blogIndex].contentB = document.getElementById('content').value
+
+
+localStorage.setItem('article', JSON.stringify(blogValues)) 
+
+document.getElementById('title').value =''
+document.getElementById('summary').value =''
+// editor.html.set("")
+        } 
+        getEditableBlog();   
+        </script>
+
+          </body>
+          </html>
