@@ -12,7 +12,7 @@ export const addComment = async (req, res) => {
      
     });
     await comment.save();
-    res.status(201).send({ message: "comment submitted successfully", comment });
+    res.status(201).send({ message: "comment submitted successfully", Comments });
   };
   
   export const removeComment = async (req, res) => {

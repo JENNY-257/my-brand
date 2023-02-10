@@ -11,7 +11,7 @@ const createBlog = async(req,res) =>{
             image : result.secure_url
         })
         const blogCreated =await newBlog.save()
-        res.status(201).json(blogCreated)
+        res.status(200).json(blogCreated)
     } catch (error) {
         res.status(404).json(error)
     }
@@ -21,7 +21,7 @@ const createBlog = async(req,res) =>{
 const getAllBlogs = async (req,res)=>{
     try {
         const blog = await blogs.find({}).sort({createdAt :-1})
-        res.status(201).json(blog)
+        res.status(200).json(blog)
     } catch (error) {
         res.status(404).json(error)
     }
@@ -38,7 +38,7 @@ const getSingleBlog = async (req,res)=>{
     if( !blog1){
         return res.status(404).json({error: "there is no such blog"})
     }
-    res.status(201).json(blog1)
+    res.status(200).json(blog1)
 }
 //delete single blog 
 const deleteBlog = async(req,res)=>{
@@ -68,7 +68,7 @@ const updateBlog = async (req,res)=>{
     if(!updateB){
         res.status(404).json({error:"there is no such blog"})
     }
-    res.status(201).json(updateB)
+    res.status(200).json(updateB)
 }
 
 export {

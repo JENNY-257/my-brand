@@ -1,4 +1,4 @@
-import { Schema, model,mongoose } from "mongoose";
+import { Schema,mongoose } from "mongoose";
 
 const schemaComment =  Schema(
   {
@@ -7,7 +7,7 @@ const schemaComment =  Schema(
 
     blog: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Blog",
+      ref: "Blog"
     },
   }
   

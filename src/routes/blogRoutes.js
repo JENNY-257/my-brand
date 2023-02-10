@@ -10,10 +10,10 @@ const router = Router()
 
 // create blog
 
-router.post("",upload.single("image"),validate( blogValidationSchema),createBlog)
+router.post("/",upload.single("image"),validate( blogValidationSchema),createBlog)
 
 //read all blogs
-router.get("",getAllBlogs)
+router.get("/",getAllBlogs)
 
 //read single blog
 router.get("/:id",getSingleBlog)

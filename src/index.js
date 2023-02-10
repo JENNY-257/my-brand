@@ -12,16 +12,16 @@ import router from "./routes/commentRoutes.js"
 mongoose.set('strictQuery', false);
 
 
-mongoose
-	.connect("mongodb+srv://admin:vmQRzg2k2kQt1nDb@cluster0.oiwfu8m.mongodb.net/blogs?retryWrites=true&w=majority", { useNewUrlParser: true })
-	.then(() => {
-
-		const app = express()
+const app = express()
 app.use(
   bodyParser.json({
     limit: '50mb',
   }),
 );
+mongoose
+	.connect("mongodb+srv://admin:vmQRzg2k2kQt1nDb@cluster0.oiwfu8m.mongodb.net/blogs?retryWrites=true&w=majority", { useNewUrlParser: true })
+	.then(() => {
+
 const secretKey = 'secretKey'
 		const jwtOptions = {
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -42,16 +42,17 @@ const secretKey = 'secretKey'
 			});
 		  }));
 
-app.use(express.json())
-app.use("/api/v1/users",userRouter);
-app.use("/api/v1/blogs",blogRouter);
-app.use("/api/v1/messages",messageRoutes);
-app.use("/api/v1/comments",router);
 		app.listen(5000, () => {
 			console.log("Server has started!")
 		})
 	})
-
+	
+app.use(express.json())
+app.use("/api/v1/users",userRouter);
+app.use("/api/v1/blogs",blogRouter);
+app.use("/api/v1",messageRoutes);
+app.use("/api/v1",router);
+export default app
 
 
 
