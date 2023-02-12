@@ -1,26 +1,40 @@
 import request from 'supertest'
 import app from '../index.js'
 jest.setTimeout(2000000)
+describe("user authentication",()=>{
+  test("should register a a user",async()=>{
+    const user = {
+      username : "user",
+      email : "user@test.com",
+      password : "password"
+    }
+    const res = await request(app).post("/api/v1/users").send(user)
+    expect(res.statusCode).toBe(200)
+  })
+  test("should sign in a user",async()=>{
+    const res = await request(app).post("/api/v1/login").send({
+      username:"usertest",
+      email:"test123@email.com",
+      password:"password"
+    })
+    expect(res.statusCode).toBe(200)
+  })
+},15000)
 describe("getAllblogs",() =>{
     test('Should return all blogs', async () => {
         const response = await request(app).get('/api/v1/blogs');
         expect(response.statusCode).toBe(200);
       });
-})
-describe("getSingleblog",() =>{
-    test('Should return single blog', async () => {
-        const response = await request(app).get('/api/v1/blogs/63e36bed09039ac26884a27d');
-        expect(response.statusCode).toBe(200);
-
-      });
-})
-
-describe("delteSingleblog",() =>{
-    test('Should delete single blog', async () => {
-        const response = await request(app).delete('/api/v1/blogs/63e36bed09039ac26884a27d');
-        expect(response.statusCode).toBe(201);
-
-      });
+      test('Should return single blog', async () => {
+          const response = await request(app).get('/api/v1/blogs/63e36bed09039ac26884a27d');
+          expect(response.statusCode).toBe(200);
+      
+        });
+      test('Should delete single blog', async () => {
+            const response = await request(app).delete('/api/v1/blogs/63e36bed09039ac26884a27d');
+            expect(response.statusCode).toBe(201);
+        
+          });
 })
 describe("create blog",() =>{
     test('Should create single  blog', async () => {
@@ -85,5 +99,5 @@ describe("like a blog",() =>{
               const res =await request(app).delete('/api/v1/blogs/63e36bed09039ac26884a27d/comments/63e382eab2db9b3aafc7fa1d');
               expect(res.statusCode).toBe(404);
             });
-        
+      
             })

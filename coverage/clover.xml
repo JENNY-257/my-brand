@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676211295015" clover="3.2.0">
-  <project timestamp="1676211295015" name="All files">
-    <metrics statements="131" coveredstatements="75" conditionals="23" coveredconditionals="3" methods="20" coveredmethods="9" elements="174" coveredelements="87" complexity="0" loc="131" ncloc="131" packages="7" files="19" classes="19"/>
+<coverage generated="1676235907950" clover="3.2.0">
+  <project timestamp="1676235907953" name="All files">
+    <metrics statements="135" coveredstatements="76" conditionals="27" coveredconditionals="3" methods="20" coveredmethods="10" elements="182" coveredelements="89" complexity="0" loc="135" ncloc="135" packages="7" files="19" classes="19"/>
     <package name="src">
       <metrics statements="21" coveredstatements="15" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="index.js" path="C:\Users\Patrick M\Desktop\learnExpress\src\index.js">
@@ -30,7 +30,7 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="75" coveredstatements="34" conditionals="12" coveredconditionals="3" methods="13" coveredmethods="6"/>
+      <metrics statements="79" coveredstatements="35" conditionals="16" coveredconditionals="3" methods="13" coveredmethods="7"/>
       <file name="blog.js" path="C:\Users\Patrick M\Desktop\learnExpress\src\controllers\blog.js">
         <metrics statements="40" coveredstatements="21" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="4"/>
         <line num="5" count="1" type="stmt"/>
@@ -114,9 +114,13 @@
         <line num="19" count="1" type="stmt"/>
       </file>
       <file name="userController.js" path="C:\Users\Patrick M\Desktop\learnExpress\src\controllers\userController.js">
-        <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="9" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="7" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
