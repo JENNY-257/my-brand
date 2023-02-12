@@ -1,19 +1,29 @@
+// import mongoose from "mongoose"
 import Comments from "../models/comment.js";
-import Blog from "../models/Blog.js";
+// import Blog from "../models/Blog.js";
 
 export const addComment = async (req, res) => {
-    const blog = await Blog.findOne({ _id: req.params.id });
+    // const blog = await Blog.findOne({ _id: req.params.id });
 
     const comment = new Comments({
+      blog:req.params.id,
       name: req.body.name,
       message: req.body.message,
-      blog:blog
+      
 
      
     });
     await comment.save();
-    res.status(201).send({ message: "comment submitted successfully", Comments });
+    res.status(201).json({ comment: comment });
   };
+  export const getCommentsByBlog = async (req, res)=>{
+
+    const comments = await Comments.find({blog: req.params.id}).sort({createdAt :-1})
+    .populate({path: "blog"})
+
+    return res.status(200).send(comments)
+    
+   }
   
   export const removeComment = async (req, res) => {
     try {
@@ -23,3 +33,11 @@ export const addComment = async (req, res) => {
       res.status(404).send({ error: "comment doesn't exist!" });
     }
   };
+
+
+
+
+
+
+
+

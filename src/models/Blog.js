@@ -4,10 +4,11 @@ const blogSchema = new mongoose.Schema(
   {
     title: String,
     content:String,
-    image:String
-  
+    image:String,
+    likes:{
+      type:Number, default:0}
   }
   
 );
 
-export default mongoose.model("Blogs", blogSchema);
+export default mongoose.model("Blog", blogSchema);

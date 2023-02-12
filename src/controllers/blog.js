@@ -70,11 +70,22 @@ const updateBlog = async (req,res)=>{
     }
     res.status(200).json(updateB)
 }
+const updateBlogLikes = async (req, res) => {
+    const like = await blogs.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: { likes: 1 } },
+      { upsert: true, new: true }
+    );
+    
+    res.json({ likes: like.likes });
+    }
 
 export {
     createBlog,
     getAllBlogs,
     getSingleBlog,
     deleteBlog,
-    updateBlog
+    updateBlog,
+    updateBlogLikes
+
 }

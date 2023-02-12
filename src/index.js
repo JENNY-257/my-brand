@@ -9,6 +9,7 @@ import userRouter from "./routes/userRoutes.js";
 import blogRouter from "./routes/blogRoutes.js"
 import messageRoutes from "./routes/messageRoutes.js"
 import router from "./routes/commentRoutes.js"
+import loginRouter from "./routes/loginRoutes.js";
 mongoose.set('strictQuery', false);
 
 
@@ -52,6 +53,7 @@ app.use("/api/v1/users",userRouter);
 app.use("/api/v1/blogs",blogRouter);
 app.use("/api/v1",messageRoutes);
 app.use("/api/v1",router);
+app.use("/api/v1/login",loginRouter)
 export default app
 
 
