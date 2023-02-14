@@ -10,10 +10,22 @@ import blogRouter from "./routes/blogRoutes.js"
 import messageRoutes from "./routes/messageRoutes.js"
 import router from "./routes/commentRoutes.js"
 import loginRouter from "./routes/loginRoutes.js";
+import cors from "cors";
+import options from "../api-docs.js";
+import swaggerJSDoc from "swagger-jsdoc"
+import swaggerUi from "swagger-ui-express"
+// import swaggerDocs from '../swagger.js';
 mongoose.set('strictQuery', false);
 
 
 const app = express()
+// app.use(express.json())
+// app.use(router)
+const specs = swaggerJSDoc(options)  
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs,  { explorer: true }))
+
+app.use(cors())
 app.use(
   bodyParser.json({
     limit: '50mb',
@@ -45,6 +57,7 @@ const secretKey = 'secretKey'
 
 		app.listen(5000, () => {
 			console.log("Server has started!")
+			// swaggerDocs(app, 5000)
 		})
 	})
 	
@@ -54,6 +67,8 @@ app.use("/api/v1/blogs",blogRouter);
 app.use("/api/v1",messageRoutes);
 app.use("/api/v1",router);
 app.use("/api/v1/login",loginRouter)
+
+
 export default app
 
 

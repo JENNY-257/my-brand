@@ -1,3 +1,24 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Blogs
+ *   description: Blogs  api
+ * /api/v1/blogs:
+ *   get:
+ *     summary: Get all blogs
+ *     tags: [Blogs]
+ *     responses:
+ *       200:
+ *         description: Blog Retrieved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 code:
+ *                   type: integer
+ * */
+
 import {Router} from "express"
 import passport from "passport"
 // import session from "express-session"
@@ -11,13 +32,14 @@ import { getCommentsByBlog } from "../controllers/commentCont.js"
 // import { isLoggedIn } from "../middlewares/isLogedin.js"
 const router = Router()
 
+
+
 // create blog
 
 router.post("/",passport.authenticate('jwt', {session: false}),upload.single("image"),validate( blogValidationSchema),createBlog)
 router.get("/:id/comments",getCommentsByBlog)
 //read all blogs
 router.get("/",getAllBlogs)
-
 //read single blog
 router.get("/:id",getSingleBlog)
 

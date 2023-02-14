@@ -22,3 +22,4 @@ const postSignupValues = async (req, res) => {
     res.send(signupValue);
   };
   export {postSignupValues}
+  
