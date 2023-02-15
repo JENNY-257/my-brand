@@ -2,7 +2,7 @@ const options = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "iribagiza project API",
+        title: "my-brand API",
         version: "1.0.0",
         description: "Blogs, Messages and User apis",
         contact: {
@@ -27,6 +27,6 @@ const options = {
         },
       },
     },
-    apis: ['src/routes/blogRoutes.js', 'src/routes/userRoutes.js', 'src/routes/messageRoutes.js'],
+    apis: ['src/routes/blogRoutes.js', 'src/routes/userRoutes.js', 'src/routes/messageRoutes.js','src/routes/loginRoutes.js'],
   }
   export default options

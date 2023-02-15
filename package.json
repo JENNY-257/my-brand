@@ -44,7 +44,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test": "jest --coverage --forceExit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"

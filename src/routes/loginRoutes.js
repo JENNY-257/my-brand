@@ -1,5 +1,6 @@
+
 import { Router } from "express";
-const loginRouter=Router();
+const loginRouter=Router()
 import { postLoginValues } from "../controllers/loginController.js";
 /**
  * @swagger
@@ -34,6 +35,5 @@ import { postLoginValues } from "../controllers/loginController.js";
  *        description: password is invalid
  *      
  */
- 
-loginRouter.post("/", postLoginValues)
+loginRouter.post("", postLoginValues)
 export default loginRouter

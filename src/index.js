@@ -67,8 +67,6 @@ app.use("/api/v1/blogs",blogRouter);
 app.use("/api/v1",messageRoutes);
 app.use("/api/v1/comments",commentRouter);
 app.use("/api/v1/login",loginRouter)
-
-
 export default app
 
 
