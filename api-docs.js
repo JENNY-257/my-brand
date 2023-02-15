@@ -2,7 +2,7 @@ const options = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "Blogs Api",
+        title: "iribagiza project API",
         version: "1.0.0",
         description: "Blogs, Messages and User apis",
         contact: {
