@@ -19,8 +19,10 @@ mongoose.set('strictQuery', false);
 
 
 const app = express()
+
 // app.use(express.json())
 // app.use(router)
+app.use(cors({origin:"*",methods:["GET","POST","DELETE","UPDATE","PUT","PATCH"]}))
 const specs = swaggerJSDoc(options)  
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs,  { explorer: true }))
