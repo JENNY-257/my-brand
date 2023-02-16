@@ -12,6 +12,7 @@ const getAllQuerries = async (req,res)=>{
 const newMessage = async (req,res)=>{
     const newQuerry = new messages({
         name : req.body.userNames,
+        phone: req.body.phone,
         email : req.body.email,
         message: req.body.message
     })

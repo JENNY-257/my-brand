@@ -19,6 +19,10 @@ import {Router} from "express"
  *               name:
  *                 type: string
  *                 description: Name of the message sender.
+ *               phone:
+ *                 type: string
+ *                 format: email
+ *                 description: Email of the message sender.
  *               email:
  *                 type: string
  *                 format: email
@@ -73,6 +77,9 @@ router.post("/messages",newMessage)
  *                   name:
  *                     type: string
  *                     description: The name of the sender.
+ *                   phone:
+ *                     type: number
+ *                     description: The phone of the sender.
  *                   email:
  *                     type: string
  *                     description: The email of the sender.
