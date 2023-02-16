@@ -7,6 +7,7 @@ const createBlog = async(req,res) =>{
         const result = await cloudinary.uploader.upload(req.file.path);
         const newBlog = await blogs.create({
             title : req.body.title,
+            blogSummary:req.body.blogSummary,
             content:req.body.content,
             image : result.secure_url
         })
@@ -61,6 +62,7 @@ const updateBlog = async (req,res)=>{
     const result = await cloudinary.uploader.upload(req.file.path);
     const updateB = await blogs.findOneAndUpdate({_id :id },{
       title : req.body.title,
+      blogSummary:req.body.blogSummary,
       content:req.body.content,
       image : result.secure_url
         
