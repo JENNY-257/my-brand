@@ -75,7 +75,7 @@ const blogRouter = Router()
  *        
  */
 
-blogRouter.post("/",passport.authenticate('jwt', {session: false}),upload.single("image"),validate( blogValidationSchema),createBlog)
+blogRouter.post("/",upload.single("image"),validate( blogValidationSchema),createBlog)
 
 /**
  * @swagger
@@ -339,3 +339,4 @@ blogRouter.put("/:id",upload.single("image"),updateBlog)
  */
 blogRouter.post("/:id/likes",updateBlogLikes)
 export default blogRouter
+// passport.authenticate('jwt', {session: false})
