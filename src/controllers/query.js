@@ -11,13 +11,14 @@ const getAllQuerries = async (req,res)=>{
 //create comment
 const newMessage = async (req,res)=>{
     const newQuerry = new messages({
-        name : req.body.userNames,
+        name : req.body.name,
         phone: req.body.phone,
         email : req.body.email,
         message: req.body.message
     })
     const squerry =await newQuerry.save();
     res.status(200).json(squerry)
+    console.log(squerry);
 }
 export {
     getAllQuerries,
