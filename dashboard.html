@@ -25,14 +25,18 @@
             <h3>Manage Blogs</h3>
       <button id="edit" onclick="text"><a href="article.html" style="text-decoration: none;color:white">Add New</a></button>
       <hr>
-       
-     
-   
-  
+      
    
   </div>
+  
   <p style="color:white; margin-left: 400px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js">
+
+  </script>
   <script>
+
+
+   let blogsGet
    function deleteArticle(id){
     let blogsGet= JSON.parse(localStorage.getItem("article")) || []
 
@@ -50,29 +54,38 @@
     let indexOne =blogsSet.findIndex((obj) => obj.id === id)
     
     blogsSet[indexOne]
-console.log(blogsSet[indexOne]);
+     console.log(blogsSet[indexOne]);
     localStorage.setItem('setArticle', JSON.stringify( blogsSet[indexOne]))
 
     window.location="edit.html"
    } 
-    function dashboard(){
-      let blogsGet= JSON.parse(localStorage.getItem("article")) || []
+    async function dashboard(){
+      // let blogsGet= JSON.parse(localStorage.getItem("article")) || []
+
+
+      await axios.get("https://iribagiza-jean.onrender.com/api/v1/blogs")
+      .then((res)=>{
+        console.log("response", res)
+         blogsGet = res.data;
+     }).catch((err)=>{console.log("error", err)})
+
+
+
       let admin=document.getElementById("adminBlog");
+      index=1
       for(let value of blogsGet){
         let ul= document.createElement("ul")
         ul.innerHTML=`
-        <li>Art${value.id}</li> 
-    <li>${value.titleB} </li>
+        <li>Art${index}</li> 
+    <li>${value.title} </li>
     <li>${value.blogDate}</li>
-   <li><img src="veuw.png"></li>
-    <li>${value.views}views</li>
     <li><img src="like.png"></li>
-    <li>${value.like}likes</li>
-    <li>${value.comment}comments</li>
+    <li>${value.likes} likes</li>
   <li><button onclick="editArticle(${value.id})"  class="done">Edit </button></li>
 <li><button onclick="deleteArticle(${value.id})" class="delete">Delete </button></li>
 
         `
+        index++
         admin.appendChild(ul)
       }
       

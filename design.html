@@ -22,32 +22,43 @@
                   
                   
             </div>
-            <script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+<script>
+
+
+
+
+
                 let form = document.getElementById("comment-form");
                 let name1 = document.getElementById("name");
-                       let message = document.getElementById("message");
+                let message = document.getElementById("message");
                     
                 let params = (new URL(document.location)).searchParams;
-                 let name = params.get('id')
+                let nameId = params.get('id')
 
-                 let getStorage =JSON.parse(localStorage.getItem('article')) ;
-
-
-                     let blogContent = getStorage.find(x => x.id == name)
+                //  let getStorage =JSON.parse(localStorage.getItem('article')) ;
+                //  let blogContent = getStorage.find(x => x.id == name)
+                
+                let blogContent;
                      
-                     
-                    function functionId(){
+                    async function functionId(){
                       let blog=document.getElementById("clickId");
                       let coma=document.createElement("div");
+
+
+                      await axios.get(`https://iribagiza-jean.onrender.com/api/v1/blogs/${nameId}`).then((res)=>{
+                       blogContent = res.data;
+                        }).catch((error)=>{
+                        console.log("Blog error: ", error);
+                        })
                       
                       coma.innerHTML=`
                       <a href="blogs.html"><</a>
-                      <h3>${blogContent.titleB}</h3>
-                      <center> <img src="${blogContent.coverPhotoB}"></center>
-                     <p>${blogContent.contentB }</p>
+                      <h3>${blogContent.title}</h3>
+                      <center> <img src="${blogContent.image}"></center>
+                     <p>${blogContent.content}</p>
                      <img  class=" likeImage"src="like.png" onclick="likes()">
-                     <span>${blogContent.like}likes<span>
-                     
+                     <span>${blogContent.likes} likes<span>
                      
                       `
                       blog.appendChild(coma)
@@ -94,24 +105,20 @@
 
                       }
 
-                      console.log(name1.value);
-                      console.log(message.value);
+                      // console.log(name1.value);
+                      // console.log(message.value);
                   //  if(message.value!=="" && name1.value!==""){
                     
                      
                     
                     
-                let params = (new URL(document.location)).searchParams;
-                 let name = params.get('id')
+                // let params = (new URL(document.location)).searchParams;
+                //  let name = params.get('id')
                  let holdName=name1.value;
-                 
- 
-                     
-                       let holdMessage=message.value;
-                 let getStorage =JSON.parse(localStorage.getItem('article')) ;
+                 let holdMessage=message.value;
 
-
-                     let blogContent = getStorage.find(x => x.id == name)
+                //  let getStorage =JSON.parse(localStorage.getItem('article')) 
+                //  let blogContent = getStorage.find(x => x.id == name)
                     
                       // check if there are no errors
                       // if (!document.querySelectorAll(".error").length) {
@@ -123,47 +130,70 @@
 
                      
                      
-                       blogContent.comment += 1
-                      blogContent.commentValue.push({
-                        id:blogContent.commentValue.length +1,
-                       messageValue:message.value,
-                       nameValue:name1.value,
-                       commentDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+                      //  blogContent.comment += 1
+                      // blogContent.commentValue.push({
+                      //   id:blogContent.commentValue.length +1,
+                      //  messageValue:message.value,
+                      //  nameValue:name1.value,
+                      //  commentDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
 
 
-                         })
+                      //    })
                           // blogContent.nameValue +=name.value
                        
                          
     
     
-                    let blogIndex = getStorage.findIndex(x => x.id == name)
+                    // let blogIndex = getStorage.findIndex(x => x.id == name)
 
-                      getStorage[blogIndex] = blogContent;
-                      localStorage.setItem("article", JSON.stringify(getStorage))
+                      // getStorage[blogIndex] = blogContent;
+                      // localStorage.setItem("article", JSON.stringify(getStorage))
+
+                      const commentData = 
+                 {
+                "name": holdName,
+                "message":  holdMessage
+               }
     
-                     message.value="";
-                    name1.value="";
+               axios.post(`https://iribagiza-jean.onrender.com/api/v1/blogs/${nameId}/comments`, commentData)
+                .then(res =>{
+                console.log("response: ", res)
+                }).catch((error)=>{
+                console.log("error :" ,error)
+               })
+              
+    
+                message.value="";
+                name1.value="";
                     // functionId();
                    
                       }
-                    function likes(){
-                      let params = (new URL(document.location)).searchParams;
-    let name = params.get('id')
+                function likes(){
+                      // let params = (new URL(document.location)).searchParams;
+                      // let name = params.get('id')
 
-    let getStorage =JSON.parse(localStorage.getItem('article')) ;
-// wibuke ko getStorage is an array
-let blogContent = getStorage.find(x => x.id == name) 
-blogContent.like +=1
+                     //let getStorage =JSON.parse(localStorage.getItem('article')) ;
+                   //   getStorage is an array
+                    //let blogContent = getStorage.find(x => x.id == name) 
+                    //blogContent.like +=1
 
-const blogIndex = getStorage.findIndex(x => x.id == name)
+                //const blogIndex = getStorage.findIndex(x => x.id == name)
 
-getStorage[blogIndex] = blogContent;
+                //getStorage[blogIndex] = blogContent;
 
-localStorage.setItem('article', JSON.stringify(getStorage)) 
+                //localStorage.setItem('article', JSON.stringify(getStorage)) 
 
-window.location.reload()
+
+                const likes = { $inc: { likes: 1 } }
+
+                axios.post(`https://iribagiza-jean.onrender.com/api/v1/blogs/${nameId}/likes`, likes)
+                 .then((res =>{console.log(res.data)}))
+                 .catch((error)=>{console.log('error:' ,error)})
+
+
+             
 }
+likes()
                     
                     
                     </script>

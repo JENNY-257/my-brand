@@ -133,7 +133,7 @@ form {
             <input class="buto" type="submit" value="Add Blog">
           </form>
           
-         
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
           
           <script>
               let blogSum=document.getElementById("summary");
@@ -159,7 +159,7 @@ form {
            async function validateForm(event) {
               event.preventDefault();
             let coverPhotoDotor = document.getElementById("cover-photo").files[0];
-             let blogSummary=blogSum.value;
+            let blogSummary=blogSum.value;
             let title=titleB.value;
             let coverPhoto=coverPhotoB.value;
             let category =categoryB.value;
@@ -196,7 +196,9 @@ form {
               }
 
               
-              if(title!==""||coverPhoto !==""||category !== "" ||content !== ""||blogSummary!==""){
+              if(title!==""||coverPhoto !=="" ||content !== ""){
+                //||category !== ""
+                //||blogSummary!==""
               // let blogArticle = JSON.parse(localStorage.getItem("article")) || []
               // blogArticle.push({
               //   id:blogArticle.length +1,
@@ -213,22 +215,37 @@ form {
               // console.log(blogArticle[0].coverPhotoB);
               
               
-              let articleBlog =JSON.parse(localStorage.getItem("article")) || []
-              articleBlog.push({
-                id:articleBlog.length +1,
-                titleB:titleB.value,
-                coverPhotoB:await toBase64(coverPhotoDotor),
-                categoryB:categoryB.value,
-                contentB:contentB.value,
-                blogSummary:blogSum.value,
-                comment:0,
-                commentValue:[],
-                blogDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}),
-               like:0,
-               views:0
-              })
-              let articleSet=localStorage.setItem("article", JSON.stringify(articleBlog))
+              // let articleBlog =JSON.parse(localStorage.getItem("article")) || []
+              // articleBlog.push({
+              //   id:articleBlog.length +1,
+              //   titleB:titleB.value,
+              //   coverPhotoB:await toBase64(coverPhotoDotor),
+              //   categoryB:categoryB.value,
+              //   contentB:contentB.value,
+              //   blogSummary:blogSum.value,
+              //   comment:0,
+              //   commentValue:[],
+              //   blogDate: new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'}),
+              //  like:0,
+              //  views:0
+              // })
+              // let articleSet=localStorage.setItem("article", JSON.stringify(articleBlog))
               // console.log(blogArticle);
+
+              const formData = new FormData()
+             
+              formData.append("title", title)
+              formData.append("blogSummary",blogSummary)
+              formData.append("content",content )
+              formData.append( "image",coverPhotoDotor)
+              
+              axios.post("https://iribagiza-jean.onrender.com/api/v1/blogs", formData,
+              {"Content-Type": "multipart/form-data" })
+              .then((res)=> console.log("response", res))
+              .catch((error)=>{
+                console.log("error", error)
+              })
+            
 
               
               blogSum.value="";
@@ -236,7 +253,7 @@ form {
                 coverPhotoB.value="";
                 categoryB.value = "";
                 editor.html.set("");
-                  console.log("hello world");
+                console.log("hello world");
             
            
             }

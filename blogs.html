@@ -11,21 +11,38 @@
 
   </div>
 <a href ="index.html">Back</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
 <script>
 let photo=document.getElementById("blogsId");
-let blogArticle=JSON.parse(localStorage.getItem("article"))||[]
-function validation(){
+
+
+async function validation(){
+  
+  let blogArticle;
+
+  await axios.get("https://iribagiza-jean.onrender.com/api/v1/blogs")
+  .then((res)=>{
+
+     blogArticle = res.data; 
+
+    console.log("response", res)
+  })
+  .catch((err)=>{console.log("error", err)})
+
+
     for(let value  of blogArticle){
         let div=document.createElement("div");
         div.innerHTML=`
-        <span>${value.titleB}</span>
-  <center><img src="${value.coverPhotoB}"></center>
+        <span>${value.title}</span>
+  <center><img src="${value.image}"></center>
   <h3>${value.blogSummary}</h3> 
-    <a onclick="views()" id="but" href="design.html?id=${value.id} ">${value.titleB}</a>
+    <a onclick="views()" id="but" href="design.html?id=${value._id} ">${value.title}</a>
         `
       photo.appendChild(div)
       
-      localStorage.setItem("article",JSON.stringify(blogArticle))
+      
     }
 
 

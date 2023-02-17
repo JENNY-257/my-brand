@@ -174,18 +174,34 @@
     let emailValue = email.value
     let messageValue = message.value
     
-    let contact = JSON.parse(localStorage.getItem("contactInf")) || []
+//     let contact = JSON.parse(localStorage.getItem("contactInf")) || []
     
-    contact.push({
-    id:contact.length +1,
-    nameB:nameValue,
-    phoneB:phoneValue,
-    emailB:emailValue,
-    messageB:messageValue,
-    contactDate:new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+//     contact.push({
+//     id:contact.length +1,
+//     nameB:nameValue,
+//     phoneB:phoneValue,
+//     emailB:emailValue,
+//     messageB:messageValue,
+//     contactDate:new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
    
+//     })
+//   localStorage.setItem("contactInf",JSON.stringify(contact))
+fetch('https://iribagiza-jean.onrender.com/api/v1/messages',{
+    method:'POST',
+    headers:{
+        "content-type":"application/json" 
+    },
+    body:JSON.stringify({
+       name:name.value,
+       phone:phone.value,
+       email:email.value,
+       message:message.value 
     })
-  localStorage.setItem("contactInf",JSON.stringify(contact))
+
+})
+.then(res=>res.json())
+.then(data=>console.log(data))
+.catch(error=>console.log(error.message))
     name.value="";
     phone.value="";
     email.value="";

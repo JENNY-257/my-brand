@@ -411,8 +411,13 @@ p{
   </div>
  
  <p style="color:white; margin-left: 100px; font-size: 10px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
-
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 <script>
+
+let params = (new URL(document.location)).searchParams;
+let commentId = params.get('id')
+let commentGet
 
  function deleteComment(id){
     // let params = (new URL(document.location)).searchParams;
@@ -429,33 +434,43 @@ p{
     console.log(indexComment);
    }
    
-    function commentMessageAuthor(){
-        let params = (new URL(document.location)).searchParams;
-    let name = params.get('id')
-    console.log(name); 
-    let commentArticleMessage = JSON.parse(localStorage.getItem('article'))
-    let commentGet = commentArticleMessage.find(x => x.id == name)
+    async function commentMessageAuthor(){
+    // let params = (new URL(document.location)).searchParams;
+    // let name = params.get('id')
+    // console.log(name); 
+    // let commentArticleMessage = JSON.parse(localStorage.getItem('article'))
+    // let commentGet = commentArticleMessage.find(x => x.id == name)
+
+
         let commentHold= document.getElementById('commentMessage')
     
-      for(let value of commentArticleMessage ){
+       await axios.get(`https://iribagiza-jean.onrender.com/api/v1/${commentId}/comments`)
+       .then((res)=>{console.log("response", res)
+        commentGet = res.data
+        }).catch((err)=>{console.log("error", err)})
 
-        for(let comments of value.commentValue){
+       index =1
+       for(let value of commentGet){
+
+        // for(let comments of value.commentValue){
             let ul= document.createElement('ul')
         ul.innerHTML=`
-        <li>Art${value.id}</li> 
-    <li>${comments.commentDate}</li>
-   <li>${comments.nameValue}</li>
-    <li>${comments.messageValue}</li>
+        <li>Art${index}</li> 
+    <li>${commentGet.commentDate}</li>
+   <li>${commentGet.name}</li>
+    <li>${commentGet.message}</li>
   
-<li><button onclick="deleteComment(${comments.id})" class="delete">Delete </button></li>
+<li><button onclick="deleteComment(${commentGet.id})" class="delete">Delete </button></li>
 
         `
+
         commentHold.appendChild(ul)
+        index++
         }
        
       }
       
-    }
+    // }
     commentMessageAuthor();
     
 </script>

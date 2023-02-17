@@ -58,8 +58,8 @@ input{
 
 .between{
     background-color: white;
-    width:1010px;
-    height:500px ;
+    width:100%;
+    max-height:500px;
     margin-right: 50px;
     margin-left: 40px;
     color: black;
@@ -209,7 +209,7 @@ input{
 .between{
     background-color: white;
     width:690px;
-    height:300px ;
+    max-height:800px;
     margin-right: 200px;
     margin-left: 0px;
     color: black;
@@ -506,7 +506,7 @@ input{
 .between{
     background-color: white;
     width:900px;
-    height:350px;
+
     
     margin-left: 0px;
     color: black;
@@ -606,6 +606,9 @@ h3{
   </div>
   </div>
   <p style="color:white; margin-left: 500px; font-size: 10px;"> @2022 by Iribagiza  Jeannette .All rights reserved</p>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
 <script>
  function deleteContact(id){
     let contactGet= JSON.parse(localStorage.getItem('contactInf')) 
@@ -619,9 +622,17 @@ console.log("hello world");
     window.location.reload()
    } 
 
-function getValue(){
+ async function getValue(){
     let contactHold= document.getElementById('contactMessage')
     let contact = JSON.parse(localStorage.getItem('contactInf'))
+
+   
+    await axios.get("https://iribagiza-jean.onrender.com/api/v1/messages")
+    .then((res)=>{
+        console.log("response", res)
+        contact = res.data;
+    }).catch((err)=>{console.log("error", err)})
+
     
     console.log('hello')
 
@@ -629,11 +640,10 @@ function getValue(){
         let ul = document.createElement('ul')
         ul.innerHTML = `
     
-        <li>${value.contactDate}</li> 
-    <li >${value.nameB} </li>
-    <li>${value.phoneB}</li>
-    <li>${value.emailB}</li>
-    <li>${value.messageB}
+    <li >${value.name} </li>
+    <li>${value.phone}</li>
+    <li>${value.email}</li>
+    <li>${value.message}
     
 <li>  <button onclick="deleteContact(${value.id})">Delete </button></li>
       `
