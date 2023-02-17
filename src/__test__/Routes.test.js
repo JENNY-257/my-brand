@@ -86,12 +86,12 @@ describe("like a blog",() =>{
             describe("POST /signup", () => {
               test("it should create a new user", async () => {
                 const res = await request(app)
-                  .post("/api/v1/users")
+                  .post("/api/v1/login")
                   .send({
                 
                     email: "",
                     password: "",
-                    username: "",
+                   
                   }) 
                  expect(200);
               });
