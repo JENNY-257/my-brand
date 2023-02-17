@@ -1,6 +1,6 @@
 import { userSchema } from "../models/User.js";
 const postSignupValues = async (req, res) => {
-    const checkUser = await userSchema.findOne({ email: req.body.email });
+    // const checkUser = await userSchema.findOne({ email: req.body.email });
   
     
       // if (checkUser.email === req.body.email) {
