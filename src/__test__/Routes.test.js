@@ -95,6 +95,9 @@ describe("like a blog",() =>{
                  expect(200);
               })
             })
+          
+
+
             describe("delete comments ",() =>{
  
               test('should  delete single comment',async()=>{
@@ -103,3 +106,11 @@ describe("like a blog",() =>{
               });
         
               })
+              describe("get comments blogIdcomments ",() =>{
+ 
+                test('should  get comments by blogId',async()=>{
+                  const res =await request(app).get('/api/v1/blogs/63e382eab2db9b3aafc7fa1d/comments');
+                  expect(res.statusCode).toBe(200);
+                });
+          
+                })
