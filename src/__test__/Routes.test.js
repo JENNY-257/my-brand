@@ -82,7 +82,7 @@ describe("like a blog",() =>{
             });
       
             })
-            // signup test
+            // login test
             describe("POST /login", () => {
               test("it should login as a user", async () => {
                 const res = await request(app)
@@ -95,4 +95,11 @@ describe("like a blog",() =>{
                  expect(200);
               })
             })
-            
+            describe("delete comments ",() =>{
+ 
+              test('should  delete single comment',async()=>{
+                const res =await request(app).delete('/api/v1/comments/63e382eab2db9b3aafc7fa1d');
+                expect(res.statusCode).toBe(204);
+              });
+        
+              })

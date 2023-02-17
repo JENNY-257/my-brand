@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676599633608" clover="3.2.0">
-  <project timestamp="1676599633609" name="All files">
-    <metrics statements="135" coveredstatements="88" conditionals="23" coveredconditionals="4" methods="20" coveredmethods="11" elements="178" coveredelements="103" complexity="0" loc="135" ncloc="135" packages="8" files="20" classes="20"/>
+<coverage generated="1676601336835" clover="3.2.0">
+  <project timestamp="1676601336836" name="All files">
+    <metrics statements="135" coveredstatements="91" conditionals="23" coveredconditionals="4" methods="20" coveredmethods="12" elements="178" coveredelements="107" complexity="0" loc="135" ncloc="135" packages="8" files="20" classes="20"/>
     <package name="my-brand">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="api-docs.js" path="C:\Users\Patrick M\Documents\my-brand\api-docs.js">
@@ -40,7 +40,7 @@
       </file>
     </package>
     <package name="my-brand.src.controllers">
-      <metrics statements="75" coveredstatements="43" conditionals="12" coveredconditionals="4" methods="13" coveredmethods="8"/>
+      <metrics statements="75" coveredstatements="46" conditionals="12" coveredconditionals="4" methods="13" coveredmethods="9"/>
       <file name="blog.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\blog.js">
         <metrics statements="40" coveredstatements="21" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="4"/>
         <line num="5" count="1" type="stmt"/>
@@ -85,7 +85,7 @@
         <line num="80" count="1" type="stmt"/>
       </file>
       <file name="commentCont.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\commentCont.js">
-        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <metrics statements="12" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="5" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
@@ -94,9 +94,9 @@
         <line num="21" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
       </file>
       <file name="loginController.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\loginController.js">
