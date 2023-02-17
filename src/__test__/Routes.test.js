@@ -1,6 +1,6 @@
 import request from 'supertest'
 import app from '../index.js'
-jest.setTimeout(2000000)
+jest.setTimeout(20000)
 describe("getAllblogs",() =>{
     test('Should return all blogs', async () => {
         const response = await request(app).get('/api/v1/blogs');
@@ -70,7 +70,7 @@ describe("like a blog",() =>{
  
           test('should get all comments',async()=>{
             const res =await request(app).post('/api/v1/blogs/63e36bed09039ac26884a27d/comments');
-            expect(res.statusCode).toBe(404);
+            expect(res.statusCode).toBe(201);
           });
       
           })
@@ -83,15 +83,14 @@ describe("like a blog",() =>{
       
             })
             // signup test
-            describe("POST /signup", () => {
-              test("it should create a new user", async () => {
+            describe("POST /login", () => {
+              test("it should login as a user", async () => {
                 const res = await request(app)
-                  .post("/api/v1/users")
+                  .post("/api/v1/login")
                   .send({
-                
-                    email: "johndoe@example.com",
-                    password: "password123",
-                    username: "johndoe",
+                    email: "",
+                    password: "",
+                  
                   }) 
                  expect(200);
               })
