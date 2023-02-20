@@ -1,7 +1,7 @@
 
 import { Router } from "express";
 const userRouter= Router()
-import { postSignupValues } from "../controllers/userController.js";
+import { postSignupValues ,getSignupValues} from "../controllers/userController.js";
 /**
  * @swagger
  * "/api/v1/users":
@@ -37,4 +37,5 @@ import { postSignupValues } from "../controllers/userController.js";
  *       description: email Already Taken    
  */
 userRouter.post("/",postSignupValues)
+userRouter.get("",getSignupValues)
 export default userRouter

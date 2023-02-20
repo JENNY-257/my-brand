@@ -1,4 +1,8 @@
 import { userSchema } from "../models/User.js";
+const getSignupValues = async (req, res) => {
+  const signupValues = await userSchema.find();
+  res.json(signupValues);
+};
 const postSignupValues = async (req, res) => {
     // const checkUser = await userSchema.findOne({ email: req.body.email });
   
@@ -21,5 +25,5 @@ const postSignupValues = async (req, res) => {
     await signupValue.save();
     res.send(signupValue);
   };
-  export {postSignupValues}
+  export {postSignupValues,getSignupValues}
   
