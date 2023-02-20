@@ -25,8 +25,8 @@ const deleteMessage = async (req, res) => {
     try {
     const deletedMessage = await messages.findOneAndDelete({ _id: req.params.id });
     if (deletedMessage) {
-    res.json({message:"Delete Successful!"});
-    } else {
+    res.json({message:"Delete Successful!"});}
+    else {
     res.status(404).json({ message: "Message not found" });
     }
     } catch{

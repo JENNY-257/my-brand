@@ -90,5 +90,40 @@ router.post("/messages",newMessage)
  *         description: Not Found
  */
  router.get("/messages",getAllQuerries);
- router.get("/messages",deleteMessage);
+/**
+ * @swagger
+ * /api/v1/messages/:id:
+ *   delete:
+ *     tags:
+ *       - messages
+ *     summary: delete messages
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                     description: The unique identifier for the message.
+ *                   name:
+ *                     type: string
+ *                     description: The name of the sender.
+ *                   phone:
+ *                     type: number
+ *                     description: The phone of the sender.
+ *                   email:
+ *                     type: string
+ *                     description: The email of the sender.
+ *                   message:
+ *                     type: string
+ *                     description: The content of the message.
+ *       404:
+ *         description: Not Found
+ */
+router.delete("/messages/:id",deleteMessage);
  export default router
