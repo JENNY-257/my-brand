@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1676643630563" clover="3.2.0">
-  <project timestamp="1676643630566" name="All files">
-    <metrics statements="136" coveredstatements="90" conditionals="23" coveredconditionals="4" methods="20" coveredmethods="11" elements="179" coveredelements="105" complexity="0" loc="136" ncloc="136" packages="8" files="20" classes="20"/>
+<coverage generated="1676890094493" clover="3.2.0">
+  <project timestamp="1676890094495" name="All files">
+    <metrics statements="152" coveredstatements="96" conditionals="25" coveredconditionals="4" methods="23" coveredmethods="11" elements="200" coveredelements="111" complexity="0" loc="152" ncloc="152" packages="8" files="20" classes="20"/>
     <package name="my-brand">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="api-docs.js" path="C:\Users\Patrick M\Documents\my-brand\api-docs.js">
@@ -41,7 +41,7 @@
       </file>
     </package>
     <package name="my-brand.src.controllers">
-      <metrics statements="75" coveredstatements="44" conditionals="12" coveredconditionals="4" methods="13" coveredmethods="8"/>
+      <metrics statements="88" coveredstatements="47" conditionals="14" coveredconditionals="4" methods="16" coveredmethods="8"/>
       <file name="blog.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\blog.js">
         <metrics statements="40" coveredstatements="21" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="4"/>
         <line num="5" count="1" type="stmt"/>
@@ -86,19 +86,22 @@
         <line num="82" count="1" type="stmt"/>
       </file>
       <file name="commentCont.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\commentCont.js">
-        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
       </file>
       <file name="loginController.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\loginController.js">
         <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -113,7 +116,7 @@
         <line num="20" count="0" type="stmt"/>
       </file>
       <file name="query.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\query.js">
-        <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="17" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -124,13 +127,23 @@
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
       </file>
       <file name="userController.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\userController.js">
-        <metrics statements="4" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
       </file>
     </package>
     <package name="my-brand.src.middlewares">
@@ -165,7 +178,7 @@
       </file>
     </package>
     <package name="my-brand.src.routes">
-      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="blogRoutes.js" path="C:\Users\Patrick M\Documents\my-brand\src\routes\blogRoutes.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="33" count="1" type="stmt"/>
@@ -179,9 +192,10 @@
         <line num="340" count="1" type="stmt"/>
       </file>
       <file name="commentRoutes.js" path="C:\Users\Patrick M\Documents\my-brand\src\routes\commentRoutes.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
       </file>
       <file name="loginRoutes.js" path="C:\Users\Patrick M\Documents\my-brand\src\routes\loginRoutes.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -189,15 +203,17 @@
         <line num="38" count="1" type="stmt"/>
       </file>
       <file name="messageRoutes.js" path="C:\Users\Patrick M\Documents\my-brand\src\routes\messageRoutes.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
       </file>
       <file name="userRoutes.js" path="C:\Users\Patrick M\Documents\my-brand\src\routes\userRoutes.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
       </file>
     </package>
     <package name="my-brand.src.utils">
