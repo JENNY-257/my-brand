@@ -2,7 +2,7 @@ import {Router} from "express"
 //  import validate from "../middlewares/validate.js";
 // import messagesValidationSchema from "../validations/messageValidate.js"
  const router=Router()
- import { newMessage, getAllQuerries } from "../controllers/query.js";
+ import { newMessage, getAllQuerries ,deleteMessage} from "../controllers/query.js";
  /**
  * @swagger
  * /api/v1/messages:
@@ -90,4 +90,5 @@ router.post("/messages",newMessage)
  *         description: Not Found
  */
  router.get("/messages",getAllQuerries);
+ router.get("/messages",deleteMessage);
  export default router
