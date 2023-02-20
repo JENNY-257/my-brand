@@ -10,6 +10,7 @@ const mesagesSchema = new mongoose. Schema(
     
   },
   
+ 
 );
 
 export default  mongoose.model("messages",  mesagesSchema);

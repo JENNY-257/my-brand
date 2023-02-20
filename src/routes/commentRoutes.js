@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {removeComment} from "../controllers/commentCont.js";
+import {removeComment,getComments} from "../controllers/commentCont.js";
 // import validate from "../middlewares/validate.js";
 
 
@@ -81,6 +81,7 @@ const commentRouter = Router();
  *                   description: An error message.
  */
 commentRouter.delete("/:id", removeComment);
+commentRouter.get("",getComments);
 
 export default commentRouter;
 

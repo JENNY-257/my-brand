@@ -1,7 +1,13 @@
 // import mongoose from "mongoose"
 import Comments from "../models/comment.js";
 // import Blog from "../models/Blog.js";
+// get all coments
+export const getComments = async(req, res)=>{
+   
+  const comments = await Comments.find().populate({path: "blog"})
+  res.send(comments)
 
+ }
 export const addComment = async (req, res) => {
     // const blog = await Blog.findOne({ _id: req.params.id });
 
