@@ -57,6 +57,13 @@ a{
     text-decoration: none;
     font-size: 30px;
 }
+.likeImage{
+  width: 20px;
+  margin-left: 150px;
+}
+p{
+  margin-left: 50px;
+}
 @media only screen and (max-width: 600px){
    
 .clickBlogs p{
@@ -176,6 +183,7 @@ img{
   border:none;
 }
    
+
     }
 
     
@@ -209,7 +217,7 @@ img{
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #f8f8f8;
-  margin-right: 300px;
+  margin-right: 400px;
 }
 
 #comment-form label {
@@ -235,6 +243,13 @@ img{
   padding: 0.5em 1em;
   margin-top: 1em;
   border:none;
+}
+p{
+ padding-left: 100px; 
+}
+.likeImage{
+  width: 20px;
+  padding-left: 100px;
 }
     }
   

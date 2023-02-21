@@ -125,8 +125,8 @@
                         // form.submit();
                       // }
                     
-                       
-
+                
+                   
 
                      
                      
@@ -152,7 +152,8 @@
                       const commentData = 
                  {
                 "name": holdName,
-                "message":  holdMessage
+                "message":  holdMessage,
+                "createdAt": new Date().toLocaleString()
                }
     
                axios.post(`https://iribagiza-jean.onrender.com/api/v1/blogs/${nameId}/comments`, commentData)
@@ -162,9 +163,9 @@
                 console.log("error :" ,error)
                })
               
-    
+               name1.value="";
                 message.value="";
-                name1.value="";
+               
                     // functionId();
                    
                       }

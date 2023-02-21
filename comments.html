@@ -269,11 +269,11 @@ h4{
 }
 
 input{
-    margin-right: 200px;
+    margin-left: 40px;
     border-radius: 50px;
     margin-bottom: 40px;
     margin-top:10px;
-    padding:10px;
+    padding:5px;
     font-size: 10px;
     
 }
@@ -400,7 +400,7 @@ p{
        <li><a id="blogs" href="dashboard.html">Blogs</a></li> 
        <li><a id="query" href="queries.html"> Queries</a></li>
        <li><a id="bcomment" href="comments.html">Comments</a>
-       <li><a id="users" href="users.html">Users</a></li></ul>
+       <!-- <li><a id="users" href="users.html">Users</a></li></ul> -->
       </div>
       <div class="between" id="commentMessage">
             <h3>Manage Comments</h3>
@@ -415,24 +415,48 @@ p{
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 <script>
 
-let params = (new URL(document.location)).searchParams;
-let commentId = params.get('id')
-let commentGet
+// let params = (new URL(document.location)).searchParams;
+// let commentId = params.get('id')
+// let commentDelete;
+let commentGet;
+let token = localStorage.getItem("token")
 
  function deleteComment(id){
     // let params = (new URL(document.location)).searchParams;
     // let name = params.get('id')
-    let  commentArticleMessage = JSON.parse(localStorage.getItem('article')) 
+    // let  commentArticleMessage = JSON.parse(localStorage.getItem('article')) 
      
-    let indexComment =commentArticleMessage.findIndex((obj) => obj.id === id)
+    // let indexComment =commentArticleMessage.findIndex((obj) => obj.id === id)
     
-    commentArticleMessage.splice(indexComment, 1)
+    // commentArticleMessage.splice(indexComment, 1)
 
-    localStorage.setItem('article', JSON.stringify(commentArticleMessage))
+    // localStorage.setItem('article', JSON.stringify(commentArticleMessage))
 
-    window.location.reload()
-    console.log(indexComment);
+    // window.location.reload()
+    // console.log(indexComment);
+ 
+    const index = commentGet.findIndex((obj) => obj._id === id);
+  console.log(index,id)
+  axios.delete(`https://iribagiza-jean.onrender.com/api/v1/comments/${id}`,{
+     headers:{
+        'Authorization' : 'Bearer ' + token
+     }
+    })
+    .then((res) => {
+      console.log("response", res);
+
+    //   const index =commentGet.findIndex((obj) => obj._id === id);
+      commentGet.splice(index, 1);
+
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log("error", err);
+    });
+
+     
    }
+   
    
     async function commentMessageAuthor(){
     // let params = (new URL(document.location)).searchParams;
@@ -444,34 +468,36 @@ let commentGet
 
         let commentHold= document.getElementById('commentMessage')
     
-       await axios.get(`https://iribagiza-jean.onrender.com/api/v1/${commentId}/comments`)
+       await axios.get(`https://iribagiza-jean.onrender.com/api/v1/comments`)
        .then((res)=>{console.log("response", res)
         commentGet = res.data
+       
         }).catch((err)=>{console.log("error", err)})
 
-       index =1
+       
        for(let value of commentGet){
 
         // for(let comments of value.commentValue){
             let ul= document.createElement('ul')
         ul.innerHTML=`
-        <li>Art${index}</li> 
-    <li>${commentGet.commentDate}</li>
-   <li>${commentGet.name}</li>
-    <li>${commentGet.message}</li>
+        <li>${value.blog.title}</li> 
+    <li>${value.createdAt}</li>
+   <li>${value.name}</li>
+    <li>${value.message}</li>
   
-<li><button onclick="deleteComment(${commentGet.id})" class="delete">Delete </button></li>
+<li><button onclick="deleteComment('${value._id}')" class="delete">Delete </button></li>
 
         `
 
         commentHold.appendChild(ul)
-        index++
+       
         }
        
       }
       
     // }
     commentMessageAuthor();
+    
     
 </script>
 </body>

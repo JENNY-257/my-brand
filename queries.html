@@ -586,7 +586,7 @@ h3{
        <li><a id="blogs" href="dashboard.html">Blogs</a></li> 
        <li><a id="query" href="queries.html"> Queries</a></li> 
        <li><a id="bcomment" href="comments.html">Comments</a></li>
-       <li><a id="users" href="users.html">Users</a></li></ul>
+       <!-- <li><a id="users" href="users.html">Users</a></li></ul> -->
       </div>
       <div class="between" id="contactMessage">
             <h3>Manage queries</h3>
@@ -610,23 +610,34 @@ h3{
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 
 <script>
- function deleteContact(id){
-    let contactGet= JSON.parse(localStorage.getItem('contactInf')) 
 
-    let index2 =contactGet.findIndex((obj) => obj.id === id)
-    
-    contactGet.splice(index2, 1)
-console.log("hello world");
-    localStorage.setItem('contactInf', JSON.stringify(contactGet))
+let contact ;
+let token = localStorage.getItem("token")
 
-    window.location.reload()
-   } 
+  function deleteContact(id){
+    const index2  = contact.findIndex((obj) => obj._id === id)
+   console.log(index2, id)
+    console.log(contact)
+    axios.delete(`https://iribagiza-jean.onrender.com/api/v1/messages/${id}`,{
+    headers:{
+      'Authorization': 'Bearer ' + token
+    }
+   })
+       .then((res)=>{
+        console.log("response", res)
+        contact.slice(index2, 1)
+        window.location.reload()
+      })
+       
+       .catch((err)=>{console.log("error", err)})
+   
+      
+    }
 
  async function getValue(){
-    let contactHold= document.getElementById('contactMessage')
-    let contact = JSON.parse(localStorage.getItem('contactInf'))
 
-   
+    let contactHold= document.getElementById('contactMessage')
+    
     await axios.get("https://iribagiza-jean.onrender.com/api/v1/messages")
     .then((res)=>{
         console.log("response", res)
@@ -645,7 +656,7 @@ console.log("hello world");
     <li>${value.email}</li>
     <li>${value.message}
     
-<li>  <button onclick="deleteContact(${value.id})">Delete </button></li>
+<li>  <button onclick="deleteContact('${value._id}')">Delete </button></li>
       `
         contactHold.appendChild(ul)
 

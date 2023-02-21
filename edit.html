@@ -132,37 +132,63 @@ form {
           
             <button class = "buto" onclick="saveBlog()">save</button>
           </form>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
         <script>
           let editor = new FroalaEditor('#content',{heightMax:150}) 
         </script>
         <script>
+          const token = localStorage.getItem("token")
+          const blogId = localStorage.getItem("id")
+          var url1 = window.location.search.substr(1).split("&");
+          const id = url1[0];
+          console.log(id)
             function getEditableBlog(){
-         const editableBlog=  JSON.parse(localStorage.getItem('setArticle'))
-         document.getElementById('title').value= editableBlog.titleB;
-         document.getElementById('summary').value= editableBlog.blogSummary;
-        editor.html.set(editableBlog.contentB);   
+        //  const editableBlog=  JSON.parse(localStorage.getItem('setArticle'))
+        
+         axios.get(`https://iribagiza-jean.onrender.com/api/v1/blogs/${blogId}`,)
+        .then((res)=> {
+        console.log(res)
+        document.getElementById('title').value= res.data.title;
+        document.getElementById('summary').value= res.data.blogSummary;
+        editor.html.set(res.data.content);   
+      })
+      .catch((err)=>{
+      console.log("error", err)
+      })
+          
         }
         function saveBlog(){
 
-let editableBlog = JSON.parse(localStorage.getItem('setArticle'))
 
-let blogValues = JSON.parse(localStorage.getItem('article'))
-let blogIndex = blogValues.findIndex(x => x.id == editableBlog.id)
+const title =  document.getElementById('title').value 
+const summary = document.getElementById('summary').value
+const  content = document.getElementById('content').value
+console.log("hello one")
+const updatedValues = {
+      "title": title,
+      "blogSummary": summary,
+      "content": content
+   }
+   
+   axios.put(`https://iribagiza-jean.onrender.com/api/v1/blogs/${id}` ,updatedValues
+  //  headers:{
+  //     'Authorization': 'Bearer ' + token
+  //     }
+  
+  )
+   .then((res)=>{
+    console.log("reponse", res)
+   }).catch((err)=>{
+      console.log("error", err)
+   })
 
-console.log(blogValues[blogIndex])
-blogValues[blogIndex].titleB=document.getElementById('title').value 
-blogValues[blogIndex].blogSummary=document.getElementById('summary').value
-blogValues[blogIndex].contentB = document.getElementById('content').value
 
-
-localStorage.setItem('article', JSON.stringify(blogValues)) 
-
-document.getElementById('title').value =''
-document.getElementById('summary').value =''
-// editor.html.set("")
+  document.getElementById('title').value =''
+  document.getElementById('summary').value =''
+  editor.html.set("")
         } 
-        getEditableBlog();   
+  getEditableBlog();   
         </script>
 
           </body>

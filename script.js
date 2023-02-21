@@ -3,7 +3,7 @@ eField = form.querySelector(".email"),
 eInput = eField.querySelector("input"),
 pField = form.querySelector(".password"),
 pInput = pField.querySelector("input");
-form.onsubmit = (e)=>{
+form.onsubmit = async (e)=>{
   e.preventDefault(); //preventing from form submitting
   //if email and password is blank then add shake class in it else call specified function
   (eInput.value == "") ? eField.classList.add("shake", "error") : checkEmail();
@@ -27,17 +27,59 @@ form.onsubmit = (e)=>{
       eField.classList.add("valid");
     }
   }
-  function checkPass(){ //checkPass function
-    if(pInput.value == ""){ //if pass is empty then add error and remove valid class
-      pField.classList.add("error");
-      pField.classList.remove("valid");
-    }else{ //if pass is empty then remove error and add valid class
-      pField.classList.remove("error");
-      pField.classList.add("valid");
-    }
-  }
+  
   //if eField and pField doesn't contains error class that mean user filled details properly
-  if(!eField.classList.contains("error") && !pField.classList.contains("error")){
-    window.location="dashboard.html"; //redirecting user to the specified url which is inside action attribute of form tag
+  // if(!eField.classList.contains("error") && !pField.classList.contains("error")){
+  //     //redirecting user to the specified url which is inside action attribute of form tag
+  // }
+ let signupEmail ;
+ let signupPassword;
+
+ let emailValue = eInput.value
+ let passwordValue = pInput.value
+ await axios.get("https://iribagiza-jean.onrender.com/api/v1/users")
+.then((res)=>{
+
+    for(let value of res.data){
+
+        signupEmail = value.email
+        signupPassword = value.password
+    }
+    console.log("response",res.data)
+    
+
+}).catch((err)=>{
+    console.log("error", err)
+})
+console.log(eInput.value)
+   //if(emailValue == signupEmail || passwordValue === signupPassword){
+   
+    let loginData = {
+      "email": eInput.value,
+      "password": pInput.value, 
+  
+     }
+
+    
+    
+    axios.post("https://iribagiza-jean.onrender.com/api/v1/login", loginData)
+  .then((res)=>{
+   console.log("response", res)
+   localStorage.setItem("token", res.data.token)
+   window.location ="dashboard.html";
+  }).catch((err)=>{console.log("error", err)})
+
+  // }
+
+  checkPass()
+}
+//}
+function checkPass(){ //checkPass function
+  if(pInput.value == ""){ //if pass is empty then add error and remove valid class
+    pField.classList.add("error");
+    pField.classList.remove("valid");
+  }else{ //if pass is empty then remove error and add valid class
+    pField.classList.remove("error");
+    pField.classList.add("valid");
   }
 }

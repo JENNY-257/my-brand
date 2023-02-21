@@ -238,6 +238,7 @@ form {
               formData.append("blogSummary",blogSummary)
               formData.append("content",content )
               formData.append( "image",coverPhotoDotor)
+              // formData.append("createdDate", new Date().toLocaleString())
               
               axios.post("https://iribagiza-jean.onrender.com/api/v1/blogs", formData,
               {"Content-Type": "multipart/form-data" })

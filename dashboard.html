@@ -19,7 +19,7 @@
        <li><a id="blogs" href="dashboard.html"> Blogs</a></li> <hr>
        <li><a id="query" href="queries.html"> Queries</a> <hr>
        <li><a id="comment" href="comments.html">Comments</a></li><hr>
-       <li><a id="users" href="users.html">Users</a></li><hr>
+       <!-- <li><a id="users" href="users.html">Users</a></li><hr> -->
       </div>
       <div class="between" id="adminBlog">
             <h3>Manage Blogs</h3>
@@ -37,25 +37,41 @@
 
 
    let blogsGet
-   function deleteArticle(id){
-    let blogsGet= JSON.parse(localStorage.getItem("article")) || []
+   let token = localStorage.getItem("token")
 
-    let index =blogsGet.findIndex((obj) => obj.id === id)
-    
-    blogsGet.splice(index, 1)
+   function deleteArticle(id) {
 
-    localStorage.setItem('article', JSON.stringify(blogsGet))
+  const index = blogsGet.findIndex((obj) => obj._id === id);
+  console.log(index,id)
+ 
 
-    window.location.reload()
-   } 
+  axios
+    .delete(`https://iribagiza-jean.onrender.com/api/v1/blogs/${id}`,{
+     headers:{
+        'Authorization': 'Bearer ' + token
+     }
+    })
+    .then((res) => {
+      console.log("response", res);
+
+      blogsGet.splice(index, 1);
+
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log("error", err);
+    });
+}
    function editArticle(id){
-    let blogsSet= JSON.parse(localStorage.getItem("article")) || []
 
-    let indexOne =blogsSet.findIndex((obj) => obj.id === id)
+     localStorage.setItem("id", id)
+    // let blogsSet= JSON.parse(localStorage.getItem("article")) || []
+
+    // let indexOne =blogsSet.findIndex((obj) => obj.id === id)
     
-    blogsSet[indexOne]
-     console.log(blogsSet[indexOne]);
-    localStorage.setItem('setArticle', JSON.stringify( blogsSet[indexOne]))
+    // blogsSet[indexOne]
+    //  console.log(blogsSet[indexOne]);
+    // localStorage.setItem('setArticle', JSON.stringify( blogsSet[indexOne]))
 
     window.location="edit.html"
    } 
@@ -67,6 +83,7 @@
       .then((res)=>{
         console.log("response", res)
          blogsGet = res.data;
+         console.log(blogsGet)
      }).catch((err)=>{console.log("error", err)})
 
 
@@ -78,11 +95,12 @@
         ul.innerHTML=`
         <li>Art${index}</li> 
     <li>${value.title} </li>
-    <li>${value.blogDate}</li>
+    <li>${value.createdAt}</li>
     <li><img src="like.png"></li>
     <li>${value.likes} likes</li>
-  <li><button onclick="editArticle(${value.id})"  class="done">Edit </button></li>
-<li><button onclick="deleteArticle(${value.id})" class="delete">Delete </button></li>
+ 
+    <li><button onclick="editArticle('${value._id}')"  class="done">Edit </button></li>
+<li><button onclick="deleteArticle('${value._id}')" class="delete">Delete </button></li>
 
         `
         index++

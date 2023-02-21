@@ -6,7 +6,7 @@ const usernameError = document.querySelector('#username-error');
 const emailError = document.querySelector('#email-error');
 const passwordError = document.querySelector('#password-error');
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   if (username.value === '') {
@@ -29,4 +29,30 @@ form.addEventListener('submit', (e) => {
   } else {
     passwordError.textContent = '';
   }
+ 
+
+
+if(password.value ===""|| email.value === ""){
+
+  let signupData = {
+    "username": username.value,
+    "email": email.value ,
+    "password": password.value, 
+
+   }
+
+  axios.post("https://iribagiza-jean.onrender.com/api/v1/users", signupData)
+  .then((res)=>{
+   console.log("response", res)
+   localStorage.setItem("token", res.data.token)
+  }).catch((err)=>{
+    console.log("error", err)
+    passwordError.textContent = err.data.message;
+  })
+   
+
+}
+  
+
+
 });
