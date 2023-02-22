@@ -64,6 +64,18 @@ describe("like a blog",() =>{
           });
       
           })
+          // test delete message
+          describe(" delete messages",() =>{
+ 
+            test('should delete message',async()=>{
+              const res =await request(app).delete('/api/v1/messages/63f3b5555d936bcb019fc54a');
+              expect(res.statusCode).toBe(200);
+            });
+        
+            })
+
+
+
   // test comments
 
  describe("get comments ",() =>{

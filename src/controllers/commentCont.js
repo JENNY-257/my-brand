@@ -34,7 +34,7 @@ export const addComment = async (req, res) => {
   export const removeComment = async (req, res) => {
     try {
       await Comments.deleteOne({ _id: req.params.id });
-      res.status(204).send({ message: "comment deleted successfully" });
+      res.status(200).send({ message: "comment deleted successfully" });
     } catch {
       res.status(404).send({ error: "comment doesn't exist!" });
     }
