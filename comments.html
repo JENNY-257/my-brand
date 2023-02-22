@@ -262,14 +262,14 @@ p{
     }
     
 h4{
-    margin-left: 10px;
+    margin-left: 5px;
     margin-top: 20px;
-    font-size: 20px;
-    padding-right: 4px;
+    font-size: 10px;
+   
 }
 
 input{
-    margin-left: 40px;
+    margin-left: 90px;
     border-radius: 50px;
     margin-bottom: 40px;
     margin-top:10px;
@@ -473,29 +473,28 @@ let token = localStorage.getItem("token")
         commentGet = res.data
        
         }).catch((err)=>{console.log("error", err)})
+   
+        for(let value of commentGet){
 
-       
-       for(let value of commentGet){
+// for(let comments of value.commentValue){
+    let ul= document.createElement('ul')
+ul.innerHTML=`
+<li>${value.title}</li> 
+<li>${value.createdAt}</li>
+<li>${value.name}</li>
+<li>${value.message}</li>
 
-        // for(let comments of value.commentValue){
-            let ul= document.createElement('ul')
-        ul.innerHTML=`
-        <li>${value.blog.title}</li> 
-    <li>${value.createdAt}</li>
-   <li>${value.name}</li>
-    <li>${value.message}</li>
-  
 <li><button onclick="deleteComment('${value._id}')" class="delete">Delete </button></li>
+`
 
-        `
+commentHold.appendChild(ul)
 
-        commentHold.appendChild(ul)
-       
-        }
-       
-      }
-      
-    // }
+}
+
+}
+
+// }
+    
     commentMessageAuthor();
     
     
