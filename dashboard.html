@@ -64,7 +64,8 @@
 }
    function editArticle(id){
 
-     localStorage.setItem("id", id)
+    localStorage.setItem('id', JSON.stringify(id))
+
     // let blogsSet= JSON.parse(localStorage.getItem("article")) || []
 
     // let indexOne =blogsSet.findIndex((obj) => obj.id === id)

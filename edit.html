@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<htm>
+<htm lang="en">
     <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>check article</title>
         <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 
@@ -139,10 +142,7 @@ form {
         </script>
         <script>
           const token = localStorage.getItem("token")
-          const blogId = localStorage.getItem("id")
-          var url1 = window.location.search.substr(1).split("&");
-          const id = url1[0];
-          console.log(id)
+          const blogId =  JSON.parse(localStorage.getItem('id'))
             function getEditableBlog(){
         //  const editableBlog=  JSON.parse(localStorage.getItem('setArticle'))
         
@@ -160,33 +160,36 @@ form {
         }
         function saveBlog(){
 
-
-const title =  document.getElementById('title').value 
-const summary = document.getElementById('summary').value
-const  content = document.getElementById('content').value
+const blogId =  JSON.parse(localStorage.getItem('id'))
+console.log("hello one")
+const blogTitle =  document.getElementById('title').value 
+const BlogSummary = document.getElementById('summary').value
+const  blogContent = document.getElementById('content').value
 // console.log("hello one")
 const updatedValues = {
-      "title": title,
-      "blogSummary": summary,
-      "content": content
+      "title": blogTitle,
+      "blogSummary": BlogSummary,
+      "content": blogContent,
    }
    
-   axios.put(`https://iribagiza-jean.onrender.com/api/v1/blogs/${id}` ,updatedValues
-  //  headers:{
-  //     'Authorization': 'Bearer ' + token
-  //     }
+   axios.put(`https://iribagiza-jean.onrender.com/api/v1/blogs/${blogId}` ,updatedValues,
   
   )
    .then((res)=>{
-    console.log("reponse", res)
-   }).catch((err)=>{
+   console.log("reponse", res)
+   console.log("blogId", blogId)
+   document.getElementById('title').value =''
+   document.getElementById('summary').value =''
+   editor.html.set("")
+   }
+   
+   )
+
+   .catch((err)=>{
       console.log("error", err)
    })
 
 
-  // document.getElementById('title').value =''
-  // document.getElementById('summary').value =''
-  editor.html.set("")
         } 
   getEditableBlog();   
         </script>
