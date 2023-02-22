@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677068653318" clover="3.2.0">
-  <project timestamp="1677068653318" name="All files">
+<coverage generated="1677069282569" clover="3.2.0">
+  <project timestamp="1677069282569" name="All files">
     <metrics statements="152" coveredstatements="100" conditionals="25" coveredconditionals="5" methods="23" coveredmethods="12" elements="200" coveredelements="117" complexity="0" loc="152" ncloc="152" packages="8" files="20" classes="20"/>
     <package name="my-brand">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -131,8 +131,8 @@
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
       </file>
       <file name="userController.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\userController.js">

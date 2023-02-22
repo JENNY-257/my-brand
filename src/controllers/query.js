@@ -27,7 +27,7 @@ const deleteMessage = async (req, res) => {
     if (deletedMessage) {
     res.json({message:"Delete Successful!"});}
     else {
-    res.status(404).json({ message: "Message not found" });
+    res.status(200).json({ message: "Message not found" });
     }
     } catch{
     res.status(404).json({ message: "Message not found" });
