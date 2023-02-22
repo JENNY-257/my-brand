@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677069282569" clover="3.2.0">
-  <project timestamp="1677069282569" name="All files">
-    <metrics statements="152" coveredstatements="100" conditionals="25" coveredconditionals="5" methods="23" coveredmethods="12" elements="200" coveredelements="117" complexity="0" loc="152" ncloc="152" packages="8" files="20" classes="20"/>
+<coverage generated="1677069756249" clover="3.2.0">
+  <project timestamp="1677069756249" name="All files">
+    <metrics statements="152" coveredstatements="102" conditionals="25" coveredconditionals="5" methods="23" coveredmethods="13" elements="200" coveredelements="120" complexity="0" loc="152" ncloc="152" packages="8" files="20" classes="20"/>
     <package name="my-brand">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="api-docs.js" path="C:\Users\Patrick M\Documents\my-brand\api-docs.js">
@@ -41,7 +41,7 @@
       </file>
     </package>
     <package name="my-brand.src.controllers">
-      <metrics statements="88" coveredstatements="51" conditionals="14" coveredconditionals="5" methods="16" coveredmethods="9"/>
+      <metrics statements="88" coveredstatements="53" conditionals="14" coveredconditionals="5" methods="16" coveredmethods="10"/>
       <file name="blog.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\blog.js">
         <metrics statements="40" coveredstatements="21" conditionals="10" coveredconditionals="3" methods="6" coveredmethods="4"/>
         <line num="5" count="1" type="stmt"/>
@@ -86,7 +86,7 @@
         <line num="82" count="1" type="stmt"/>
       </file>
       <file name="commentCont.js" path="C:\Users\Patrick M\Documents\my-brand\src\controllers\commentCont.js">
-        <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -95,8 +95,8 @@
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
